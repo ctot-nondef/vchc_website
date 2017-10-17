@@ -1,5 +1,6 @@
 <template>
-  <div class="menu">
+  <div class="menu text-lg-right" >
+      <v-toolbar-title >Testtitle</v-toolbar-title>
       <v-btn
         icon
         light
@@ -7,10 +8,8 @@
       >
         <v-icon>web</v-icon>
       </v-btn>
-      <v-toolbar-title v-text="title">Testtitle</v-toolbar-title>
-      Testtitle
       <v-spacer></v-spacer>
-    </div>
+  </div>
 </template>
 
 <script>
