@@ -1,18 +1,39 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Start from '@/components/Start';
-import Menu from '@/components/Menu';
+import app from '@/components/app';
+import start from '@/components/start';
+import events from '@/components/events';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
+  /* Step 1: define our routes */
     {
-      path: '/',
-      name: 'Start',
+      /*
+      We mount our App component to the root route '/'.
+      The App component loads the Layout component which has our named
+      router router-views.
+      */
+      path: '/:lang',
       components: {
-        Menu,
-        Start },
+        default: App,
+      },
+      // Children to the root path '/'
+      children: [
+        {
+          path: 'start',
+          components: {
+            Content: start,
+          },
+        },
+        {
+          path: 'events',
+          components: {
+            Content: events,
+          },
+        },
+      ],
     },
   ],
 });
