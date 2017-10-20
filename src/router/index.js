@@ -17,7 +17,12 @@ export default new Router({
       */
       path: '/:lang',
       components: {
-        default: App,
+        default: app,
+      },
+      beforeEnter: (to, from, next) => {
+        /* eslint no-console: ["error", { allow: ["log"] }] */
+        console.log();
+        next();
       },
       // Children to the root path '/'
       children: [

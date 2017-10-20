@@ -1,8 +1,6 @@
 <template>
-  <app>
     <v-app light>
       <v-toolbar fixed app :clipped-left="clipped" class="elevation-0">
-        <v-toolbar-title >Testtitle</v-toolbar-title>
         <v-btn
           icon
           light
@@ -28,11 +26,11 @@
         <span>&copy; 2017</span>
       </v-footer>
     </v-app>
-  </app>
 </template>
 
 <script>
   export default {
+    /* eslint no-console: ["error", { allow: ["log", "error"] }] */
     data() {
       return {
         clipped: false,

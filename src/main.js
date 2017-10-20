@@ -2,7 +2,8 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 
 import Vue from 'vue';
-
+import axios from 'axios';
+import VueAxios from 'vue-axios';
 import {
   Vuetify,
   VApp,
@@ -17,6 +18,10 @@ import {
 
 import router from './router';
 
+const config = {
+  api: 'http://wksd8dev.eos.arz.oeaw.ac.at/',
+};
+
 Vue.use(
   Vuetify, {
     components: {
@@ -29,6 +34,8 @@ Vue.use(
       VGrid,
       VToolbar,
       transitions } });
+
+Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false;
 
