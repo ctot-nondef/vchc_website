@@ -18,10 +18,6 @@ import {
 
 import router from './router';
 
-const config = {
-  api: 'http://wksd8dev.eos.arz.oeaw.ac.at/',
-};
-
 Vue.use(
   Vuetify, {
     components: {
@@ -38,6 +34,9 @@ Vue.use(
 Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false;
+Vue.config.customAPI = {
+  api: 'http://wksd8dev.eos.arz.oeaw.ac.at/',
+};
 
 /* eslint-disable no-new */
 new Vue({
