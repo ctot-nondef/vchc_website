@@ -14,6 +14,8 @@ import {
   VIcon,
   VGrid,
   VToolbar,
+  VParallax,
+  VCard,
   transitions } from 'vuetify';
 
 import router from './router';
@@ -29,14 +31,13 @@ Vue.use(
       VIcon,
       VGrid,
       VToolbar,
+      VParallax,
+      VCard,
       transitions } });
 
 Vue.use(VueAxios, axios);
 
 Vue.config.productionTip = false;
-Vue.config.customAPI = {
-  api: 'http://wksd8dev.eos.arz.oeaw.ac.at/',
-};
 
 /* eslint-disable no-new */
 new Vue({

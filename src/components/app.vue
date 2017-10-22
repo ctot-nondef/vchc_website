@@ -1,26 +1,24 @@
 <template>
     <v-app light>
-      <v-toolbar fixed app :clipped-left="clipped" class="elevation-0">
-        <v-btn
-          icon
-          light
-          @click.stop="clipped = !clipped"
-        >
-          <v-icon>web</v-icon>
-        </v-btn>
-        <v-spacer></v-spacer>
+      <v-toolbar fixed app class="elevation-0 blue darken-4">
+          <v-toolbar-title>
+            <router-link :to="{ name: 'start' }">
+              <div class="logo">
+                <h5 style="font-weight: 200; padding: 0px; margin: 0px;letter-spacing: 3px!important; line-height:25px;">VIENNA CENTER FOR</h5>
+                <h5 style="font-weight: 800; padding: 0px; margin: 0px;letter-spacing: 2px!important; line-height:25px;">THE HISTORY OF COLLECTING</h5>
+              </div>
+            </router-link>
+          </v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-toolbar-side-icon class="hidden-md-and-up"></v-toolbar-side-icon>
+          <v-toolbar-items class="hidden-sm-and-down">
+            <v-btn color="white" flat v-for="item in items" :key="item.tid[0].value" :to="{name: item.field_path[0].value}">{{ item.name[0].value }}</v-btn>
+          </v-toolbar-items>
       </v-toolbar>
       <main>
-        <v-content>
-          <v-container fluid>
             <v-slide-y-transition mode="out-in">
-              <v-layout column align-center>
                 <router-view name="Content"></router-view>
-              </v-layout>
-
             </v-slide-y-transition>
-          </v-container>
-        </v-content>
       </main>
       <v-footer :fixed="fixed" app>
         <span>&copy; 2017</span>
@@ -29,22 +27,25 @@
 </template>
 
 <script>
+  import { DRUPAL } from '../http';
+
   export default {
-    /* eslint no-console: ["error", { allow: ["log", "error"] }] */
+    /* eslint no-console: ["error", { allow: ["log"] }] */
     data() {
       return {
-        clipped: false,
-        drawer: true,
         fixed: false,
-        items: [{
-          icon: 'bubble_chart',
-          title: 'Inspire',
-        }],
-        miniVariant: false,
-        right: true,
-        rightDrawer: false,
-        title: 'Vuetify.js',
+        items: [],
       };
+    },
+    beforeRouteEnter: (to, from, next) => {
+      DRUPAL.get(`${to.params.lang}\\menu`).then((response) => {
+        next(vm => vm.setData(response.data));
+      });
+    },
+    methods: {
+      setData(menu) {
+        this.items = menu;
+      },
     },
   };
 
@@ -52,4 +53,10 @@
 
 <style lang="stylus">
   @import '../stylus/main'
+  .logo {
+  	color: white;
+  	white-space: nowrap;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none none none!important;
+  }
 </style>
