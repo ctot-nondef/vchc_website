@@ -66,15 +66,32 @@
 </template>
 
 <script>
+import { DRUPAL, HTTP } from '../http';
 
 export default {
   data: () => ({
+    toFetch: {
+      mission: 'full\\9',
+    },
     windowSize: {
       x: window.innerWidth,
       y: window.innerHeight,
     },
   }),
-
+  created() {
+    /* eslint no-console: ["error", { allow: ["log"] }] */
+    const promises = [];
+    const a = Object.entries(this.toFetch);
+    let idx = a.length - 1;
+    while (idx) {
+      console.log('test', a);
+      promises.push(DRUPAL.get(`${this.$route.params.lang}\\${a[idx][1]}`));
+      idx -= 1;
+    }
+    HTTP.all(promises).then((res) => {
+      console.log(res);
+    });
+  },
   mounted() {
     this.onResize();
   },
