@@ -9,8 +9,7 @@
           class="white--text"
         >
           <div class="layer"></div>
-          <h4 class="white--text pagecaption">Sammler • Sammlungen • Sammlungskulturen</h4>
-          <h4 class="white--text pagecaption">in Wien und Mitteleuropa</h4>
+          <v-layout v-html="splash.mainContentOfPage" column align-center justify-center></v-layout>
           <v-btn icon color="white">
             <v-icon>expand_more</v-icon>
           </v-btn>
@@ -27,23 +26,17 @@
       >
         <v-flex xs12 sm4 class="my-3">
           <div class="text-xs-center">
-            <h2 class="headline">Mission Statement</h2>
-            <span class="subheading">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </span>
+            <h2 class="headline" v-html="mission.headline"></h2>
+            <span class="subheading" v-html="mission.mainContentOfPage"></span>
           </div>
         </v-flex>
       </v-layout>
     </section>
-
     <section>
       <v-parallax src="static/savoyen2.jpg" height="380">
         <v-layout column align-center justify-center>
           <div class="layer"></div>
           <h4 class="white--text pagecaption">Wissenschaftlicher Beirat</h4>
-          <v-btn icon color="white">
-            <v-icon>expand_more</v-icon>
-          </v-btn>
         </v-layout>
       </v-parallax>
     </section>    <section>
@@ -72,24 +65,31 @@ export default {
   data: () => ({
     toFetch: {
       mission: 'full\\9',
+      splash: 'full\\10',
     },
     windowSize: {
       x: window.innerWidth,
-      y: window.innerHeight,
+      y: window.innerHeight - 64,
     },
+    mission: null,
+    splash: null,
   }),
   created() {
     /* eslint no-console: ["error", { allow: ["log"] }] */
     const promises = [];
     const a = Object.entries(this.toFetch);
     let idx = a.length - 1;
-    while (idx) {
-      console.log('test', a);
-      promises.push(DRUPAL.get(`${this.$route.params.lang}\\${a[idx][1]}`));
+    while (idx > -1) {
+      promises[idx] = DRUPAL.get(`${this.$route.params.lang}\\${a[idx][1]}`);
       idx -= 1;
     }
     HTTP.all(promises).then((res) => {
-      console.log(res);
+      let idn = a.length - 1;
+      while (idn > -1) {
+        this[a[idn][0]] = res[idn].data[0];
+        idn -= 1;
+      }
+      console.log(this);
     });
   },
   mounted() {
@@ -98,7 +98,7 @@ export default {
 
   methods: {
     onResize() {
-      this.windowSize = { x: window.innerWidth, y: window.innerHeight };
+      this.windowSize = { x: window.innerWidth, y: window.innerHeight - 64 };
     },
   },
 };
