@@ -27,10 +27,11 @@
 </template>
 
 <script>
-  import { DRUPAL } from '../http';
+  import DRUPAL from '../http';
 
   export default {
     /* eslint no-console: ["error", { allow: ["log"] }] */
+    mixins: [DRUPAL],
     data() {
       return {
         fixed: false,
@@ -38,7 +39,7 @@
       };
     },
     beforeRouteEnter: (to, from, next) => {
-      DRUPAL.get(`${to.params.lang}\\menu`).then((response) => {
+      DRUPAL.methods.get(`${to.params.lang}\\menu`).then((response) => {
         next(vm => vm.setData(response.data));
       });
     },

@@ -15,6 +15,18 @@ Vue.use(Router);
 export default new Router({
   routes: [
     {
+      path: '/',
+      name: 'root',
+      redirect: (to) => {
+        /* eslint no-console: ["error", { allow: ["log"] }] */
+        if (to.params.lang !== 'en' || to.params.lang !== 'de') {
+          const language = window.navigator.userLanguage || window.navigator.language;
+          return `/${language.split('-')[0]}`;
+        }
+        return to.fullPath;
+      },
+    },
+    {
       path: '/:lang',
       components: {
         default: app,
@@ -69,6 +81,14 @@ export default new Router({
           components: {
             Content: pub,
           },
+        },
+        {
+          path: '',
+          redirect: '/en/start',
+        },
+        {
+          path: '*',
+          redirect: 'start',
         },
       ],
     },

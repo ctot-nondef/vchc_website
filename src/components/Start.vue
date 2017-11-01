@@ -59,9 +59,10 @@
 </template>
 
 <script>
-import { DRUPAL, HTTP } from '../http';
+import DRUPAL from '../http';
 
 export default {
+  mixins: [DRUPAL],
   data: () => ({
     toFetch: {
       mission: 'full\\9',
@@ -76,26 +77,11 @@ export default {
   }),
   created() {
     /* eslint no-console: ["error", { allow: ["log"] }] */
-    const promises = [];
-    const a = Object.entries(this.toFetch);
-    let idx = a.length - 1;
-    while (idx > -1) {
-      promises[idx] = DRUPAL.get(`${this.$route.params.lang}\\${a[idx][1]}`);
-      idx -= 1;
-    }
-    HTTP.all(promises).then((res) => {
-      let idn = a.length - 1;
-      while (idn > -1) {
-        this[a[idn][0]] = res[idn].data[0];
-        idn -= 1;
-      }
-      console.log(this);
-    });
+    this.batchget(this.toFetch);
   },
   mounted() {
     this.onResize();
   },
-
   methods: {
     onResize() {
       this.windowSize = { x: window.innerWidth, y: window.innerHeight - 64 };
