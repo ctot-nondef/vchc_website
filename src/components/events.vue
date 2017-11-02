@@ -1,25 +1,26 @@
 <template>
   <v-content>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
-  </div>
-</v-content>
+    <section>
+      <v-parallax src="static/savoyen2.jpg" height="380">
+        <v-layout column align-center justify-center>
+          <div class="layer"></div>
+          <h4 class="white--text pagecaption">Events</h4>
+        </v-layout>
+      </v-parallax>
+      <v-layout
+        column
+        wrap
+        class="my-5"
+        align-center
+      >
+        <v-flex xs12 sm4 class="my-3">
+          <div class="text-xs-center">
+            <span class="subheading" v-html=""></span>
+          </div>
+        </v-flex>
+      </v-layout>
+    </section>
+  </v-content>
 </template>
 
 <script>

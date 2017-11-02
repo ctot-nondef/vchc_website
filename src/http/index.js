@@ -27,6 +27,7 @@ export default {
           this[a[idn][0]] = res[idn].data[0];
           idn -= 1;
         }
+        this.loading = false;
       });
     },
   },

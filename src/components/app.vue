@@ -10,9 +10,40 @@
             </router-link>
           </v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-toolbar-side-icon class="hidden-md-and-up"></v-toolbar-side-icon>
-          <v-toolbar-items class="hidden-sm-and-down">
+          <v-toolbar-side-icon class="hidden-lg-and-up"></v-toolbar-side-icon>
+          <v-toolbar-items class="hidden-md-and-down">
             <v-btn color="white" flat v-for="item in items" :key="item.tid[0].value" :to="{name: item.field_path[0].value}">{{ item.name[0].value }}</v-btn>
+            <v-speed-dial top right direction="bottom">
+                  <v-btn
+                    slot="activator"
+                    color="blue darken-4"
+                    dark
+                    fab
+                    hover
+                  >
+                    <v-icon>language</v-icon>
+                  </v-btn>
+                  <router-link :to="{ name: this.$route.name, params: { lang: 'en' }}">
+                    <v-btn
+                      fab
+                      dark
+                      small
+                      color="blue darken-2"
+                    >
+                      EN
+                    </v-btn>
+                  </router-link>
+                  <router-link :to="{ name: this.$route.name, params: { lang: 'de' }}">
+                    <v-btn
+                      fab
+                      dark
+                      small
+                      color="blue darken-2"
+                    >
+                      DE
+                    </v-btn>
+                  </router-link>
+                </v-speed-dial>
           </v-toolbar-items>
       </v-toolbar>
       <main>
@@ -43,10 +74,21 @@
         next(vm => vm.setData(response.data));
       });
     },
+    watch: {
+      // call again the method if the route changes
+      $route(to, from) {
+        if (to.params.lang !== from.params.lang) {
+          location.reload();
+        }
+      },
+    },
     methods: {
       setData(menu) {
         this.items = menu;
       },
+    },
+    route: {
+      canReuse: false,
     },
   };
 

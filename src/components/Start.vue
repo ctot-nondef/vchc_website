@@ -1,7 +1,7 @@
 <template>
-  <v-content>
+  <v-content v-if="!loading">
     <section>
-      <v-parallax src="/static/savoyen.jpg" :height="windowSize.y" jumbotron>
+      <v-parallax v-bind:src="splash.primaryImageOfPage.url" :height="windowSize.y" jumbotron>
         <v-layout
           column
           align-center
@@ -36,25 +36,22 @@
       <v-parallax src="static/savoyen2.jpg" height="380">
         <v-layout column align-center justify-center>
           <div class="layer"></div>
-          <h4 class="white--text pagecaption">Wissenschaftlicher Beirat</h4>
+          <h4 class="white--text pagecaption">{{ board.headline }}</h4>
         </v-layout>
       </v-parallax>
-    </section>    <section>
-          <v-layout
-            column
-            wrap
-            class="my-5"
-            align-center
-          >
-            <v-flex xs12 sm4 class="my-3">
-              <div class="text-xs-center">
-                <span class="subheading">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </span>
-              </div>
-            </v-flex>
-          </v-layout>
-        </section>
+      <v-layout
+        column
+        wrap
+        class="my-5"
+        align-center
+      >
+        <v-flex xs12 sm4 class="my-3">
+          <div class="text-xs-center">
+            <span class="subheading" v-html="board.mainContentOfPage"></span>
+          </div>
+        </v-flex>
+      </v-layout>
+    </section>
   </v-content>
 </template>
 
@@ -67,6 +64,7 @@ export default {
     toFetch: {
       mission: 'full\\9',
       splash: 'full\\10',
+      board: 'full\\11',
     },
     windowSize: {
       x: window.innerWidth,
@@ -74,6 +72,8 @@ export default {
     },
     mission: null,
     splash: null,
+    board: null,
+    loading: true,
   }),
   created() {
     /* eslint no-console: ["error", { allow: ["log"] }] */
@@ -92,13 +92,5 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .layer {
-      background-color: rgba(0, 50, 99, 0.5);
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-  }
+
 </style>

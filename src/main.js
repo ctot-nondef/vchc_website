@@ -16,7 +16,8 @@ import {
   VToolbar,
   VParallax,
   VCard,
-  transitions } from 'vuetify';
+  transitions,
+  VSpeedDial } from 'vuetify';
 
 import router from './router';
 
@@ -33,7 +34,9 @@ Vue.use(
       VToolbar,
       VParallax,
       VCard,
-      transitions } });
+      transitions,
+      VSpeedDial,
+    } });
 
 Vue.use(VueAxios, axios);
 
