@@ -22,9 +22,11 @@ export default {
         idx -= 1;
       }
       return HTTP.all(promises).then((res) => {
+        console.log(res);
         let idn = a.length - 1;
         while (idn > -1) {
-          this[a[idn][0]] = res[idn].data[0];
+          if (res[idn].data.length === 1) this[a[idn][0]] = res[idn].data[0];
+          else this[a[idn][0]] = res[idn].data;
           idn -= 1;
         }
         this.loading = false;

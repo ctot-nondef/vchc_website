@@ -70,9 +70,6 @@ export default {
       x: window.innerWidth,
       y: window.innerHeight - 64,
     },
-    mission: null,
-    splash: null,
-    board: null,
     loading: true,
   }),
   created() {

@@ -1,5 +1,5 @@
 <template>
-  <v-content>
+  <v-content v-if="!loading">
     <section>
       <v-parallax src="static/savoyen2.jpg" height="380">
         <v-layout column align-center justify-center>
@@ -24,12 +24,35 @@
 </template>
 
 <script>
+import DRUPAL from '../http';
+
 export default {
-  name: 'start',
-  data() {
-    return {
-      msg: 'Welcome to Your Vue.js App',
-    };
+  mixins: [DRUPAL],
+  data: () => ({
+    toFetch: {
+      menu: 'menu',
+      mission: 'full\\9',
+    },
+    windowSize: {
+      x: window.innerWidth,
+      y: window.innerHeight - 64,
+    },
+    menu: null,
+    loading: true,
+  }),
+  created() {
+    /* eslint no-console: ["error", { allow: ["log"] }] */
+    this.batchget(this.toFetch).then((res) => {
+      console.log(this.menu, res);
+    });
+  },
+  mounted() {
+    this.onResize();
+  },
+  methods: {
+    onResize() {
+      this.windowSize = { x: window.innerWidth, y: window.innerHeight - 64 };
+    },
   },
 };
 </script>
