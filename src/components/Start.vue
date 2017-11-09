@@ -1,6 +1,6 @@
-<template>   
+<template>
   <v-content v-if="!loading">
-    <section>
+    <section> 
       <v-parallax v-bind:src="splash.primaryImageOfPage.url" :height="windowSize.y" jumbotron>
         <v-layout
           column

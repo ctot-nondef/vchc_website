@@ -1,6 +1,6 @@
 <template>
     <v-app light>
-      <v-toolbar fixed app class="elevation-0 blue darken-4">
+      <v-toolbar fixed app class="elevation-0 primary">
           <v-toolbar-title>
             <router-link :to="{ name: 'start' }">
               <div class="logo">
@@ -16,7 +16,7 @@
             <v-speed-dial top right direction="bottom">
                   <v-btn
                     slot="activator"
-                    color="blue darken-4"
+                    color="accent"
                     dark
                     fab
                     hover
@@ -28,7 +28,7 @@
                       fab
                       dark
                       small
-                      color="blue darken-2"
+                      color="accent"
                     >
                       EN
                     </v-btn>
@@ -38,7 +38,7 @@
                       fab
                       dark
                       small
-                      color="blue darken-2"
+                      color="accent"
                     >
                       DE
                     </v-btn>
@@ -95,6 +95,16 @@
 </script>
 
 <style lang="stylus">
+  @import '../../node_modules/vuetify/src/stylus/settings/_colors.styl'
+  $theme := {
+    primary: #003263
+    accent: #2c76be
+    secondary: #2c76be
+    info: #B2DFDB
+    warning: $red.base
+    error: $red.base
+    success: $green.base
+  }
   @import '../stylus/main'
   .logo {
   	color: white;

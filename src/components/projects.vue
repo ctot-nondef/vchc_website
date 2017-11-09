@@ -20,18 +20,20 @@
         </v-flex>
       </v-layout>
     </section>
-    <carousel-3d :width="400" :height="500" :space="600">
+    <carousel-3d :width="400" :perspective="0" :height="460" :space="600" :controls-visible="true">
       <slide v-for="(project, index) in projects" :index="index" :key="project.name" >
+        <v-flex fill-height>
         <v-card class="elevation-0 transparent">
-          <v-card-media v-if="project.thumbnailUrl" v-bind:src="project.thumbnailUrl.url" height="200px">
+          <v-card-media v-if="project.thumbnailUrl" v-bind:src="project.thumbnailUrl.url" style="height: 200px!important;">
           </v-card-media>
-          <v-card-title primary-title class="layout justify-center">
-            <div class="headline text-xs-center" height="200px!important">{{ project.headline }}</div>
+          <v-card-title primary-title class="layout justify-center" style="height: 200px!important;" >
+            <div class="headline text-xs-center">{{ project.headline }}</div>
           </v-card-title>
           <v-card-actions>
-            <v-btn flat v-on:click="goTo(project.name)">DETAILS</v-btn>
+            <v-btn flat class="primary" v-on:click="goTo(project.name)">DETAILS</v-btn>
           </v-card-actions>
         </v-card>
+        </v-flex>
       </slide>
     </carousel-3d>
     <section v-for="project in projects" :key="project.name" v-bind:id="'p'+project.name">
@@ -102,7 +104,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .carousel-3d-slide {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 50, 99, 0.1);
   border-color: rgba(0, 0, 0, 0);
+  border-left: 4px solid rgb(0,50,99)!important;
+}
+.next {
+  color: #1976d2!important;
 }
 </style>
