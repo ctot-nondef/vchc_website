@@ -18,8 +18,11 @@ import {
   VCard,
   transitions,
   VSpeedDial } from 'vuetify';
+import Carousel3d from 'vue-carousel-3d';
+import VueScrollTo from 'vue-scrollto';
 
 import router from './router';
+
 
 Vue.use(
   Vuetify, {
@@ -39,6 +42,8 @@ Vue.use(
     } });
 
 Vue.use(VueAxios, axios);
+Vue.use(Carousel3d);
+Vue.use(VueScrollTo);
 
 Vue.config.productionTip = false;
 
