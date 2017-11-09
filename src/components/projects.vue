@@ -82,9 +82,7 @@ export default {
   }),
   created() {
     /* eslint no-console: ["error", { allow: ["log"] }] */
-    this.batchget(this.toFetch).then((res) => {
-      console.log(this.projects, res);
-    });
+    this.batchget(this.toFetch);
   },
   mounted() {
     this.onResize();
@@ -94,7 +92,6 @@ export default {
       this.windowSize = { x: window.innerWidth, y: window.innerHeight - 64 };
     },
     goTo(dest) {
-      console.log(dest);
       const el = `#p${dest}`;
       this.$scrollTo(el, 1500);
     },
