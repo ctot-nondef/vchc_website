@@ -20,23 +20,31 @@
         </v-flex>
       </v-layout>
     </section>
-    <carousel-3d :width="400" :perspective="0" :height="460" :space="600" :controls-visible="true">
-      <slide v-for="(project, index) in projects" :index="index" :key="project.name" >
-        <v-flex fill-height>
-        <v-card class="elevation-0 transparent">
-          <v-card-media v-if="project.thumbnailUrl" v-bind:src="project.thumbnailUrl.url" style="height: 200px!important;">
-          </v-card-media>
-          <v-card-title primary-title class="layout justify-center" style="height: 200px!important;" >
-            <div class="headline text-xs-center">{{ project.headline }}</div>
-          </v-card-title>
-          <v-card-actions>
-            <v-btn flat class="primary" v-on:click="goTo(project.name)">DETAILS</v-btn>
-          </v-card-actions>
-        </v-card>
-        </v-flex>
-      </slide>
-    </carousel-3d>
-    <section v-for="project in projects" :key="project.name" v-bind:id="'p'+project.name">
+    <section class="pt-5 pb-5">
+      <carousel-3d :width="400" :disable3d="true" :height="500" :space="500" :controls-visible="true">
+        <slide v-for="(project, index) in projects" :index="index" :key="project.name" >
+          <v-card class="elevation-2 projectcard white--text" color="accent" >
+            <v-layout column justify-space-between style="height: 100%!important;">
+              <v-card-media v-if="project.thumbnailUrl" v-bind:src="project.thumbnailUrl.url" style="height: 200px!important;">
+              </v-card-media>
+              <v-card-title primary-title class="layout justify-center">
+                <div class="headline text-xs-center">{{ project.headline }}</div>
+              </v-card-title>
+              <v-card-actions class="text-xs-right">
+                <v-layout row justify-space-between align-end>
+                  <v-flex></v-flex>
+                  <v-flex>
+                    <v-btn dark class="primary" v-on:click="goTo(project.name)">DETAILS</v-btn>
+                    <v-btn dark class="primary" v-on:click="goTo(project.name)">CONTACT</v-btn>
+                  </v-flex>
+                </v-layout>
+              </v-card-actions>
+            </v-layout>
+          </v-card>
+        </slide>
+      </carousel-3d>
+    </section>
+    <section class="pt-5 pb-5" v-for="project in projects" :key="project.name" v-bind:id="'p'+project.name">
       <v-parallax v-if="project.thumbnailUrl" v-bind:src="project.primaryImageOfPage.url" height="380">
         <v-layout column align-center justify-center>
           <div class="layer"></div>
@@ -49,18 +57,36 @@
           <h4 class="white--text pagecaption">{{ project.headline }}</h4>
         </v-layout>
       </v-parallax>
-      <v-layout
-        column
-        wrap
-        class="my-5"
-        align-center
-      >
-        <v-flex xs12 sm4 class="my-3">
-          <div class="text-xs-center">
-            <span class="subheading" v-html="project.description"></span>
+      <v-container grid-list-xl text-xs-center>
+        <v-layout class="pt-5 pb-5" row wrap align-start>
+        <v-flex xs12 md4>
+          <div justify-center>
+            <span class="subheading" style="text-align: justify;" v-html="project.description"></span>
           </div>
         </v-flex>
-      </v-layout>
+        <v-flex xs0 md1></v-flex>
+        <v-flex xs12 md7 lg6 xl4>
+          <v-card color="accent" class="elevation-2 projectcard white--text">
+            <v-container fluid grid-list-sm>
+              <v-layout row wrap>
+                <v-flex xs12 lg7>
+                    <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
+                      <div>
+                        <h5>{{ project.accountablePerson[0].first_name }} {{ project.accountablePerson[0].last_name }}</h5>
+                      </div>
+                      <div>Tel: {{ project.accountablePerson[0].telephone }}</div>
+                      <a class="white--text" :href="'mailto:'+project.accountablePerson[0].email[0]">Mail: {{ project.accountablePerson[0].email[0] }}</a>
+                    </v-card-title>
+                </v-flex>
+                <v-flex xs12 lg4>
+                  <v-card-media v-if="project.accountablePerson[0].image" :src="project.accountablePerson[0].image[0].url"  height="200px" contain></v-card-media>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-card>
+        </v-flex>
+        </v-layout>
+      </v-container>
     </section>
   </v-content>
 </template>
@@ -104,11 +130,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .carousel-3d-slide {
-  background-color: rgba(0, 50, 99, 0.1);
-  border-color: rgba(0, 0, 0, 0);
-  border-left: 4px solid rgb(0,50,99)!important;
+  border: none;
 }
-.next {
-  color: #1976d2!important;
+.projectcard {
+  border-left: 20px solid rgb(0,50,99)!important;
+  height:100%!important;
 }
 </style>

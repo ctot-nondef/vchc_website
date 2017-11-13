@@ -75,7 +75,7 @@
       });
     },
     watch: {
-      // call again the method if the route changes
+      // reload data if language is swapped
       $route(to, from) {
         if (to.params.lang !== from.params.lang) {
           location.reload();
