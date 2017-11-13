@@ -23,7 +23,7 @@
     <section class="pt-5 pb-5">
       <carousel-3d :width="400" :disable3d="true" :height="500" :space="500" :controls-visible="true">
         <slide v-for="(project, index) in projects" :index="index" :key="project.name" >
-          <v-card class="elevation-2 projectcard white--text" color="accent" >
+          <v-card class="elevation-2 projectcard white--text"  >
             <v-layout column justify-space-between style="height: 100%!important;">
               <v-card-media v-if="project.thumbnailUrl" v-bind:src="project.thumbnailUrl.url" style="height: 200px!important;">
               </v-card-media>
@@ -66,13 +66,13 @@
         </v-flex>
         <v-flex xs0 md1></v-flex>
         <v-flex xs12 md7 lg6 xl4>
-          <v-card color="accent" class="elevation-2 projectcard white--text">
+          <v-card class="elevation-2 projectcard white--text">
             <v-container fluid grid-list-sm>
               <v-layout row wrap>
                 <v-flex xs12 lg7>
                     <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
                       <div>
-                        <h5>{{ project.accountablePerson[0].first_name }} {{ project.accountablePerson[0].last_name }}</h5>
+                        <h6>{{ project.accountablePerson[0].first_name }} {{ project.accountablePerson[0].last_name }}</h6>
                       </div>
                       <div>Tel: {{ project.accountablePerson[0].telephone }}</div>
                       <a class="white--text" :href="'mailto:'+project.accountablePerson[0].email[0]">Mail: {{ project.accountablePerson[0].email[0] }}</a>
@@ -130,9 +130,13 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .carousel-3d-slide {
+
+  background-color: rgba(0, 0, 0, 0);
   border: none;
+
 }
 .projectcard {
+  background-color: rgba(0, 50, 99, 0.5);
   border-left: 20px solid rgb(0,50,99)!important;
   height:100%!important;
 }

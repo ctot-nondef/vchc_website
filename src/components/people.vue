@@ -7,16 +7,26 @@
           <h4 class="white--text pagecaption">{{ splash.headline }}</h4>
         </v-layout>
       </v-parallax>
-      <v-layout
-        column
-        wrap
-        class="my-5"
-        align-center
-      >
-        <v-flex xs12 sm4 class="my-3">
-          <div class="text-xs-center">
-            <span class="subheading" v-html="splash.mainContentOfPage"></span>
-          </div>
+      <v-layout row wrap align-center>
+        <v-flex xs12 md7 lg6 xl4>
+          <v-card class="elevation-2 projectcard white--text"  v-for="person in persons" :key="person.last_name" v-bind:id="'p'+person.last_name">
+            <v-container fluid grid-list-sm>
+              <v-layout row wrap>
+                <v-flex xs12 lg7>
+                    <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
+                      <div>
+                        <h6>{{ person.firstName }} {{ person.lastName }}</h6>
+                      </div>
+                      <div>Tel: {{ person.telephone }}</div>
+                      <a class="white--text" :href="'mailto:'+person.email[0]">Mail: {{ person.email[0] }}</a>
+                    </v-card-title>
+                </v-flex>
+                <v-flex xs12 lg4>
+                  <v-card-media v-if="person.image[0]" :src="person.image[0].url"  height="200px" contain></v-card-media>
+                </v-flex>
+              </v-layout>
+            </v-container>
+          </v-card>
         </v-flex>
       </v-layout>
     </section>
@@ -62,5 +72,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.projectcard {
+  background-color: rgba(0, 50, 99, 0.5);
+  border-left: 20px solid rgb(0,50,99)!important;
+  height:100%!important;
+}
 </style>
