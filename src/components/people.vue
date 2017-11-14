@@ -11,6 +11,10 @@
     <section class="pt-5 pb-5">
         <v-container grid-list-xl>
           <v-layout row wrap>
+            <v-flex xs12>
+              <h4 class="pagecaption">Leitung</h4>
+              <hr class="separator">
+            </v-flex>
             <v-flex xs12 lg6 xl4  v-for="person in boss" :key="person.last_name" v-bind:id="'p'+person.last_name">
               <v-card class="elevation-5 projectcard white--text">
                 <v-container fluid grid-list-sm>
@@ -82,6 +86,10 @@
     <section class="pt-5 pb-5">
         <v-container grid-list-xl>
           <v-layout row wrap>
+            <v-flex xs12>
+              <h4 class="pagecaption">Mitarbeiter</h4>
+              <hr class="separator">
+            </v-flex>
             <v-flex xs12 lg6 xl4 v-for="person in employees" :key="person.last_name" v-bind:id="'p'+person.last_name">
               <v-card class="elevation-5 projectcard white--text">
                 <v-container fluid grid-list-sm>
