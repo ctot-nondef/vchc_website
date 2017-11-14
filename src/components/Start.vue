@@ -1,6 +1,6 @@
 <template>
   <v-content v-if="!loading">
-    <section> 
+    <section>
       <v-parallax v-bind:src="splash.primaryImageOfPage.url" :height="windowSize.y" jumbotron>
         <v-layout
           column
@@ -10,7 +10,7 @@
         >
           <div class="layer"></div>
           <v-layout v-html="splash.mainContentOfPage" column align-center justify-center></v-layout>
-          <v-btn icon color="white">
+          <v-btn icon dark color="accent">
             <v-icon>expand_more</v-icon>
           </v-btn>
         </v-layout>

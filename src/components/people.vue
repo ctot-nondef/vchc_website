@@ -1,36 +1,107 @@
 <template>
   <v-content v-if="!loading">
-    <section>
+    <section class="pb-5">
       <v-parallax  v-bind:src="splash.banner.url" height="380">
         <v-layout column align-center justify-center>
           <div class="layer"></div>
           <h4 class="white--text pagecaption">{{ splash.headline }}</h4>
         </v-layout>
       </v-parallax>
-      <v-layout row wrap align-center>
-        <v-flex xs12 md7 lg6 xl4>
-          <v-card class="elevation-2 projectcard white--text"  v-for="person in persons" :key="person.last_name" v-bind:id="'p'+person.last_name">
-            <v-container fluid grid-list-sm>
-              <v-layout row wrap>
-                <v-flex xs12 lg7>
-                    <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
-                      <div>
-                        <h6>{{ person.firstName }} {{ person.lastName }}</h6>
-                      </div>
-                      <div>Tel: {{ person.telephone }}</div>
-                      <a class="white--text" :href="'mailto:'+person.email[0]">Mail: {{ person.email[0] }}</a>
-                    </v-card-title>
-                </v-flex>
-                <v-flex xs12 lg4>
-                  <v-card-media v-if="person.image[0]" :src="person.image[0].url"  height="200px" contain></v-card-media>
-                </v-flex>
-              </v-layout>
-            </v-container>
-          </v-card>
-        </v-flex>
-      </v-layout>
+    </section>
+    <section class="pt-5 pb-5">
+        <v-container grid-list-xl>
+          <v-layout row wrap>
+            <v-flex xs12 lg6  v-for="person in boss" :key="person.last_name" v-bind:id="'p'+person.last_name">
+              <v-card class="elevation-5 projectcard white--text">
+                <v-container fluid grid-list-sm>
+                  <v-layout row wrap>
+                    <v-flex xs12 md7>
+                        <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
+                          <div>
+                            <h6>{{ person.firstName }} {{ person.lastName }}</h6>
+                          </div>
+                          <div>Tel: {{ person.telephone }}</div>
+                          <a class="white--text" :href="'mailto:'+person.email[0]">Mail: {{ person.email[0] }}</a>
+                        </v-card-title>
+                    </v-flex>
+                    <v-flex class="pb-4 pt-4 pr-4" xs12 md4>
+                      <v-avatar size="180px" v-if="person.image[0]">
+                        <img :src="person.image[0].url" alt="avatar">
+                      </v-avatar>
+                      <v-avatar size="180px" v-if="!person.image[0]">
+                        <v-icon x-large dark >person</v-icon>
+                      </v-avatar>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
     </section>
 
+    <section class="pt-5 pb-5">
+        <v-container grid-list-xl>
+          <v-layout row wrap>
+            <v-flex xs12 lg6  v-for="person in board" :key="person.last_name" v-bind:id="'p'+person.last_name">
+              <v-card class="elevation-5 projectcard white--text">
+                <v-container fluid grid-list-sm>
+                  <v-layout row wrap>
+                    <v-flex xs12 md7>
+                        <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
+                          <div>
+                            <h6>{{ person.firstName }} {{ person.lastName }}</h6>
+                          </div>
+                          <div>Tel: {{ person.telephone }}</div>
+                          <a class="white--text" :href="'mailto:'+person.email[0]">Mail: {{ person.email[0] }}</a>
+                        </v-card-title>
+                    </v-flex>
+                    <v-flex class="pb-4 pt-4 pr-4" xs12 md4>
+                      <v-avatar size="180px" v-if="person.image[0]">
+                        <img :src="person.image[0].url" alt="avatar">
+                      </v-avatar>
+                      <v-avatar size="180px" v-if="!person.image[0]">
+                        <v-icon x-large dark >person</v-icon>
+                      </v-avatar>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+    </section>
+    <section class="pt-5 pb-5">
+        <v-container grid-list-xl>
+          <v-layout row wrap>
+            <v-flex xs12 lg6  v-for="person in employees" :key="person.last_name" v-bind:id="'p'+person.last_name">
+              <v-card class="elevation-5 projectcard white--text">
+                <v-container fluid grid-list-sm>
+                  <v-layout row wrap>
+                    <v-flex xs12 md7>
+                        <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
+                          <div>
+                            <h6>{{ person.firstName }} {{ person.lastName }}</h6>
+                          </div>
+                          <div>Tel: {{ person.telephone }}</div>
+                          <a class="white--text" :href="'mailto:'+person.email[0]">Mail: {{ person.email[0] }}</a>
+                        </v-card-title>
+                    </v-flex>
+                    <v-flex class="pb-4 pt-4 pr-4" xs12 md4>
+                      <v-avatar size="180px" v-if="person.image[0]">
+                        <img :src="person.image[0].url" alt="avatar">
+                      </v-avatar>
+                      <v-avatar size="180px" v-if="!person.image[0]">
+                        <v-icon x-large dark >person</v-icon>
+                      </v-avatar>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+    </section>
   </v-content>
 </template>
 
@@ -51,6 +122,24 @@ export default {
     menu: null,
     loading: true,
   }),
+  computed: {
+    /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
+    employees() {
+      return this.persons.filter(function a(person) {
+        return person.hasPosition === 'Projektmitarbeiter';
+      });
+    },
+    boss() {
+      return this.persons.filter(function a(person) {
+        return person.hasPosition === 'Leitung';
+      });
+    },
+    board() {
+      return this.persons.filter(function a(person) {
+        return person.hasPosition === 'Leitungsgremium';
+      });
+    },
+  },
   created() {
     /* eslint no-console: ["error", { allow: ["log"] }] */
     this.batchget(this.toFetch);
@@ -65,6 +154,12 @@ export default {
     goTo(dest) {
       const el = `#p${dest}`;
       this.$scrollTo(el, 1500);
+    },
+  },
+  filters: {
+    position(v, a) {
+      console.log(v, a);
+      return v;
     },
   },
 };

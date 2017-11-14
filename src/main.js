@@ -17,7 +17,9 @@ import {
   VParallax,
   VCard,
   transitions,
-  VSpeedDial } from 'vuetify';
+  VSpeedDial,
+  VAvatar,
+} from 'vuetify';
 import Carousel3d from 'vue-carousel-3d';
 import VueScrollTo from 'vue-scrollto';
 
@@ -39,6 +41,7 @@ Vue.use(
       VCard,
       transitions,
       VSpeedDial,
+      VAvatar,
     } });
 
 Vue.use(VueAxios, axios);
