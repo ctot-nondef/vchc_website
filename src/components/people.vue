@@ -11,7 +11,7 @@
     <section class="pt-5 pb-5">
         <v-container grid-list-xl>
           <v-layout row wrap>
-            <v-flex xs12 lg6  v-for="person in boss" :key="person.last_name" v-bind:id="'p'+person.last_name">
+            <v-flex xs12 lg6 xl4  v-for="person in boss" :key="person.last_name" v-bind:id="'p'+person.last_name">
               <v-card class="elevation-5 projectcard white--text">
                 <v-container fluid grid-list-sm>
                   <v-layout row wrap>
@@ -31,6 +31,10 @@
                       <v-avatar size="180px" v-if="!person.image[0]">
                         <v-icon x-large dark >person</v-icon>
                       </v-avatar>
+                    </v-flex>
+                    <v-flex xs12>
+                        <v-card-text v-html="person.description">
+                        </v-card-text>
                     </v-flex>
                   </v-layout>
                 </v-container>
@@ -43,7 +47,7 @@
     <section class="pt-5 pb-5">
         <v-container grid-list-xl>
           <v-layout row wrap>
-            <v-flex xs12 lg6  v-for="person in board" :key="person.last_name" v-bind:id="'p'+person.last_name">
+            <v-flex xs12 lg6 xl4  v-for="person in board" :key="person.last_name" v-bind:id="'p'+person.last_name">
               <v-card class="elevation-5 projectcard white--text">
                 <v-container fluid grid-list-sm>
                   <v-layout row wrap>
@@ -63,6 +67,10 @@
                       <v-avatar size="180px" v-if="!person.image[0]">
                         <v-icon x-large dark >person</v-icon>
                       </v-avatar>
+                    </v-flex>
+                    <v-flex xs12>
+                        <v-card-text v-html="person.description">
+                        </v-card-text>
                     </v-flex>
                   </v-layout>
                 </v-container>
@@ -74,7 +82,7 @@
     <section class="pt-5 pb-5">
         <v-container grid-list-xl>
           <v-layout row wrap>
-            <v-flex xs12 lg6  v-for="person in employees" :key="person.last_name" v-bind:id="'p'+person.last_name">
+            <v-flex xs12 lg6 xl4 v-for="person in employees" :key="person.last_name" v-bind:id="'p'+person.last_name">
               <v-card class="elevation-5 projectcard white--text">
                 <v-container fluid grid-list-sm>
                   <v-layout row wrap>
@@ -94,6 +102,10 @@
                       <v-avatar size="180px" v-if="!person.image[0]">
                         <v-icon x-large dark >person</v-icon>
                       </v-avatar>
+                    </v-flex>
+                    <v-flex xs12>
+                        <v-card-text v-html="person.description">
+                        </v-card-text>
                     </v-flex>
                   </v-layout>
                 </v-container>
