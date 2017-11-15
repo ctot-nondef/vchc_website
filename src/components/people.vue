@@ -15,43 +15,7 @@
               <h4 class="pagecaption">Leitung</h4>
               <hr class="separator">
             </v-flex>
-            <v-flex xs12 lg6 xl4  v-for="person in boss" :key="person.last_name" v-bind:id="'p'+person.last_name">
-              <v-card class="elevation-5 projectcard white--text">
-                <v-container fluid grid-list-sm>
-                  <v-layout row wrap>
-                    <v-flex xs12 md7>
-                        <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
-                          <div>
-                            <h6>{{ person.firstName }} {{ person.lastName }}</h6>
-                          </div>
-                          <div>Tel: {{ person.telephone }}</div>
-                          <a class="white--text" :href="'mailto:'+person.email[0]">Mail: {{ person.email[0] }}</a>
-                        </v-card-title>
-                    </v-flex>
-                    <v-flex class="pb-4 pt-4 pr-4" xs12 md4>
-                      <v-avatar size="180px" v-if="person.image[0]">
-                        <img :src="person.image[0].url" alt="avatar">
-                      </v-avatar>
-                      <v-avatar size="180px" v-if="!person.image[0]">
-                        <v-icon x-large dark >person</v-icon>
-                      </v-avatar>
-                    </v-flex>
-                    <v-flex xs12>
-                        <v-card-text v-html="person.description">
-                        </v-card-text>
-                    </v-flex>
-                  </v-layout>
-                </v-container>
-              </v-card>
-            </v-flex>
-          </v-layout>
-        </v-container>
-    </section>
-
-    <section class="pt-5 pb-5">
-        <v-container grid-list-xl>
-          <v-layout row wrap>
-            <v-flex xs12 lg6 xl4  v-for="person in board" :key="person.last_name" v-bind:id="'p'+person.last_name">
+            <v-flex xs12 lg6 xl4  v-for="person in employees('Leitung')" :key="person.last_name" v-bind:id="'p'+person.last_name">
               <v-card class="elevation-5 projectcard white--text">
                 <v-container fluid grid-list-sm>
                   <v-layout row wrap>
@@ -87,10 +51,78 @@
         <v-container grid-list-xl>
           <v-layout row wrap>
             <v-flex xs12>
-              <h4 class="pagecaption">Mitarbeiter</h4>
+              <h4 class="pagecaption">Leitungsgremium</h4>
               <hr class="separator">
             </v-flex>
-            <v-flex xs12 lg6 xl4 v-for="person in employees" :key="person.last_name" v-bind:id="'p'+person.last_name">
+            <v-flex xs12 lg6 xl4  v-for="person in employees('Leitung')" :key="person.last_name" v-bind:id="'p'+person.last_name">
+              <v-card class="elevation-5 projectcard white--text">
+                <v-container fluid grid-list-sm>
+                  <v-layout row wrap>
+                    <v-flex xs12 md7>
+                        <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
+                          <div>
+                            <h6>{{ person.firstName }} {{ person.lastName }}</h6>
+                          </div>
+                          <div>Tel: {{ person.telephone }}</div>
+                          <a class="white--text" :href="'mailto:'+person.email[0]">Mail: {{ person.email[0] }}</a>
+                        </v-card-title>
+                    </v-flex>
+                    <v-flex class="pb-4 pt-4 pr-4" xs12 md4>
+                      <v-avatar size="180px" v-if="person.image[0]">
+                        <img :src="person.image[0].url" alt="avatar">
+                      </v-avatar>
+                      <v-avatar size="180px" v-if="!person.image[0]">
+                        <v-icon x-large dark >person</v-icon>
+                      </v-avatar>
+                    </v-flex>
+                    <v-flex xs12>
+                        <v-card-text v-html="person.description">
+                        </v-card-text>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card>
+            </v-flex>
+            <v-flex xs12 lg6 xl4  v-for="person in employees('Leitungsgremium')" :key="person.last_name" v-bind:id="'p'+person.last_name">
+              <v-card class="elevation-5 projectcard white--text">
+                <v-container fluid grid-list-sm>
+                  <v-layout row wrap>
+                    <v-flex xs12 md7>
+                        <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
+                          <div>
+                            <h6>{{ person.firstName }} {{ person.lastName }}</h6>
+                          </div>
+                          <div>Tel: {{ person.telephone }}</div>
+                          <a class="white--text" :href="'mailto:'+person.email[0]">Mail: {{ person.email[0] }}</a>
+                        </v-card-title>
+                    </v-flex>
+                    <v-flex class="pb-4 pt-4 pr-4" xs12 md4>
+                      <v-avatar size="180px" v-if="person.image[0]">
+                        <img :src="person.image[0].url" alt="avatar">
+                      </v-avatar>
+                      <v-avatar size="180px" v-if="!person.image[0]">
+                        <v-icon x-large dark >person</v-icon>
+                      </v-avatar>
+                    </v-flex>
+                    <v-flex xs12>
+                        <v-card-text v-html="person.description">
+                        </v-card-text>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card>
+            </v-flex>
+          </v-layout>
+        </v-container>
+    </section>
+    <section class="pt-5 pb-5">
+        <v-container grid-list-xl>
+          <v-layout row wrap>
+            <v-flex xs12>
+              <h4 class="pagecaption">MitarbeiterInnen</h4>
+              <hr class="separator">
+            </v-flex>
+            <v-flex xs12 lg6 xl4 v-for="person in employees('Projektmitarbeiter')" :key="person.last_name" v-bind:id="'p'+person.last_name">
               <v-card class="elevation-5 projectcard white--text">
                 <v-container fluid grid-list-sm>
                   <v-layout row wrap>
@@ -144,19 +176,9 @@ export default {
   }),
   computed: {
     /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
-    employees() {
-      return this.persons.filter(function a(person) {
-        return person.hasPosition === 'Projektmitarbeiter';
-      });
-    },
     boss() {
       return this.persons.filter(function a(person) {
-        return person.hasPosition === 'Leitung';
-      });
-    },
-    board() {
-      return this.persons.filter(function a(person) {
-        return person.hasPosition === 'Leitungsgremium';
+        return person.hasPosition === ('Leitung');
       });
     },
   },
@@ -174,6 +196,11 @@ export default {
     goTo(dest) {
       const el = `#p${dest}`;
       this.$scrollTo(el, 1500);
+    },
+    employees(type) {
+      return this.persons.filter(function a(person) {
+        return person.hasPosition === type;
+      });
     },
   },
   filters: {

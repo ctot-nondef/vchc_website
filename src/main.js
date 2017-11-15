@@ -22,6 +22,7 @@ import {
 } from 'vuetify';
 import Carousel3d from 'vue-carousel-3d';
 import VueScrollTo from 'vue-scrollto';
+import vueSlider from 'vue-slider-component';
 
 import router from './router';
 
@@ -47,6 +48,7 @@ Vue.use(
 Vue.use(VueAxios, axios);
 Vue.use(Carousel3d);
 Vue.use(VueScrollTo);
+Vue.use(vueSlider);
 
 Vue.config.productionTip = false;
 

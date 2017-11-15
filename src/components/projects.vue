@@ -7,18 +7,6 @@
           <h4 class="white--text pagecaption">{{ splash.headline }}</h4>
         </v-layout>
       </v-parallax>
-      <v-layout
-        column
-        wrap
-        class="my-5"
-        align-center
-      >
-        <v-flex xs12 sm4 class="my-3">
-          <div class="text-xs-center">
-            <span class="subheading" v-html="splash.mainContentOfPage"></span>
-          </div>
-        </v-flex>
-      </v-layout>
     </section>
     <section class="pt-5 pb-5">
       <carousel-3d :width="500" :disable3d="true" :height="400" :space="600" :controls-visible="true">

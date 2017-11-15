@@ -33,7 +33,7 @@
       </v-layout>
     </section>
     <section>
-      <v-parallax src="static/savoyen2.jpg" height="380">
+      <v-parallax v-bind:src="board.primaryImageOfPage.url" height="380">
         <v-layout column align-center justify-center>
           <div class="layer"></div>
           <h4 class="white--text pagecaption">{{ board.headline }}</h4>
