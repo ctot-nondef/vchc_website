@@ -124,8 +124,8 @@
             </v-flex>
             <v-flex xs12 lg6 xl4 v-for="person in employees('Projektmitarbeiter')" :key="person.last_name" v-bind:id="'p'+person.last_name">
               <v-card class="elevation-5 projectcard white--text">
-                <v-container fluid grid-list-sm>
-                  <v-layout row wrap>
+                <v-container fluid grid-list-sm align-content-space-between>
+                  <v-layout row wrap >
                     <v-flex xs12 md7>
                         <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
                           <div>
@@ -143,9 +143,25 @@
                         <v-icon x-large dark >person</v-icon>
                       </v-avatar>
                     </v-flex>
-                    <v-flex xs12>
-                        <v-card-text v-html="person.description">
-                        </v-card-text>
+                    <v-flex xs12 fill-height>
+                    </v-flex>
+                  </v-layout>
+                  <v-layout column >
+                    <v-flex>
+                    <v-card-text v-html="person.description"></v-card-text>
+                    </v-flex>
+                    <v-flex>
+                      <h6 class="pl-3">Projects</h6>
+                      <v-list class="transparent" dark>
+                        <v-list-tile avatar dark v-for="project in fprojects(person.email[0])" v-bind:key="project.name" @click="">
+                          <v-list-tile-content>
+                            <v-list-tile-title>{{ project.headline }}</v-list-tile-title>
+                          </v-list-tile-content>
+                          <v-list-tile-avatar>
+                            <img v-bind:src="project.thumbnailUrl.url"/>
+                          </v-list-tile-avatar>
+                        </v-list-tile>
+                      </v-list>
                     </v-flex>
                   </v-layout>
                 </v-container>
@@ -166,6 +182,7 @@ export default {
     toFetch: {
       splash: 'full\\27',
       persons: 'teaser\\?type=person',
+      projects: 'teaser\\?type=project',
     },
     windowSize: {
       x: window.innerWidth,
@@ -174,14 +191,6 @@ export default {
     menu: null,
     loading: true,
   }),
-  computed: {
-    /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
-    boss() {
-      return this.persons.filter(function a(person) {
-        return person.hasPosition === ('Leitung');
-      });
-    },
-  },
   created() {
     /* eslint no-console: ["error", { allow: ["log"] }] */
     this.batchget(this.toFetch);
@@ -190,6 +199,7 @@ export default {
     this.onResize();
   },
   methods: {
+    /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
     onResize() {
       this.windowSize = { x: window.innerWidth, y: window.innerHeight - 64 };
     },
@@ -200,6 +210,11 @@ export default {
     employees(type) {
       return this.persons.filter(function a(person) {
         return person.hasPosition === type;
+      });
+    },
+    fprojects(person) {
+      return this.projects.filter(function a(project) {
+        return project.accountablePerson[0].email[0] === person;
       });
     },
   },
