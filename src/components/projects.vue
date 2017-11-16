@@ -32,7 +32,7 @@
         </slide>
       </carousel-3d>
     </section>
-    <section class="pt-5 pb-5" v-for="project in projects" :key="project.name" v-bind:id="'p'+project.name">
+    <section class="pt-5 pb-5" v-for="project in projects" :key="project.name" v-bind:id="'node'+project.name">
       <v-parallax v-if="project.primaryImageOfPage" v-bind:src="project.primaryImageOfPage.url" height="380">
         <v-layout column align-center justify-center>
           <div class="layer"></div>
@@ -61,14 +61,14 @@
             <v-container fluid grid-list-sm>
               <v-layout row wrap>
                 <v-flex xs12 lg7>
-                    <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
-                      <div>
-                        <h6>{{ project.accountablePerson[0].first_name }} {{ project.accountablePerson[0].last_name }}</h6>
-                      </div>
-                      <div><v-icon dark>phone</v-icon>{{ project.accountablePerson[0].telephone }}</div>
-                      <a class="white--text" :href="'mailto:'+project.accountablePerson[0].email[0]"><v-icon dark>mail</v-icon> {{ project.accountablePerson[0].email[0] }}</a>
-
-                    </v-card-title>
+                  <v-card-title primary-title style="flex-direction: column; align-items: flex-start;" >
+                    <div>
+                      <h6>{{ project.accountablePerson[0].first_name }} {{ project.accountablePerson[0].last_name }}</h6>
+                    </div>
+                    <div><v-icon dark>phone</v-icon>{{ project.accountablePerson[0].telephone }}</div>
+                    <a class="white--text" :href="'mailto:'+project.accountablePerson[0].email[0]"><v-icon dark>mail</v-icon> {{ project.accountablePerson[0].email[0] }}</a>
+                    <v-btn dark class="accent" :to="{name: 'people', params: { scrollTo: project.accountablePerson[0].id }}">DETAILS</v-btn>
+                  </v-card-title>
                 </v-flex>
                 <v-flex class="pb-4 pt-4 pr-4"xs12 lg4>
                   <v-avatar size="180px" v-if="project.accountablePerson[0].image">
@@ -102,18 +102,12 @@ export default {
       x: window.innerWidth,
       y: window.innerHeight - 64,
     },
-    menu: null,
     loading: true,
   }),
-  created() {
-    /* eslint no-console: ["error", { allow: ["log"] }] */
-    this.batchget(this.toFetch);
-  },
   mounted() {
     this.onResize();
   },
   methods: {
-
   },
 };
 </script>

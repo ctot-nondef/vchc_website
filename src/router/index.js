@@ -31,9 +31,6 @@ export default new Router({
       components: {
         default: app,
       },
-      props: {
-        scrollTo: null,
-      },
       // Children to the root path '/'
       children: [
         {
@@ -56,6 +53,9 @@ export default new Router({
           components: {
             Content: projects,
           },
+          props: {
+            Content: true,
+          },
         },
         {
           path: 'about',
@@ -76,6 +76,9 @@ export default new Router({
           name: 'people',
           components: {
             Content: people,
+          },
+          props: {
+            Content: true,
           },
         },
         {

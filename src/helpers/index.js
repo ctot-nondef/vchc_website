@@ -8,6 +8,7 @@ const DRUPAL = axios.create({
 
 
 export default {
+  props: ['scrollTo'],
   methods: {
     get(url) {
       return DRUPAL.get(url);
@@ -33,11 +34,21 @@ export default {
       });
     },
     goTo(dest) {
-      const el = `#p${dest}`;
-      this.$scrollTo(el, 1500);
+      const el = `#node${dest}`;
+      this.$scrollTo(el, 1500, { offset: -50 });
     },
     onResize() {
       this.windowSize = { x: window.innerWidth, y: window.innerHeight - 64 };
     },
+  },
+  created() {
+    /* eslint no-console: ["error", { allow: ["log"] }] */
+    if (this.toFetch) {
+      this.batchget(this.toFetch).then(() => {
+        if (this.scrollTo) {
+          this.goTo(this.scrollTo);
+        }
+      });
+    }
   },
 };

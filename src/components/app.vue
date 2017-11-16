@@ -47,9 +47,9 @@
           </v-toolbar-items>
       </v-toolbar>
       <main>
-            <v-slide-y-transition mode="out-in">
-                <router-view name="Content"></router-view>
-            </v-slide-y-transition>
+        <v-slide-y-transition mode="out-in">
+            <router-view name="Content"></router-view>
+        </v-slide-y-transition>
       </main>
       <v-footer :fixed="fixed" app>
         <span>&copy; 2017</span>
