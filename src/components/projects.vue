@@ -33,13 +33,13 @@
       </carousel-3d>
     </section>
     <section class="pt-5 pb-5" v-for="project in projects" :key="project.name" v-bind:id="'p'+project.name">
-      <v-parallax v-if="project.thumbnailUrl" v-bind:src="project.primaryImageOfPage.url" height="380">
+      <v-parallax v-if="project.primaryImageOfPage" v-bind:src="project.primaryImageOfPage.url" height="380">
         <v-layout column align-center justify-center>
           <div class="layer"></div>
           <h4 class="white--text pagecaption">{{ project.headline }}</h4>
         </v-layout>
       </v-parallax>
-      <v-parallax v-if="!project.thumbnailUrl" v-bind:src="splash.primaryImageOfPage.url" height="380">
+      <v-parallax v-if="!project.primaryImageOfPage" v-bind:src="splash.primaryImageOfPage.url" height="380">
         <v-layout column align-center justify-center>
           <div class="layer"></div>
           <h4 class="white--text pagecaption">{{ project.headline }}</h4>
@@ -65,8 +65,9 @@
                       <div>
                         <h6>{{ project.accountablePerson[0].first_name }} {{ project.accountablePerson[0].last_name }}</h6>
                       </div>
-                      <div>Tel: {{ project.accountablePerson[0].telephone }}</div>
-                      <a class="white--text" :href="'mailto:'+project.accountablePerson[0].email[0]">Mail: {{ project.accountablePerson[0].email[0] }}</a>
+                      <div><v-icon dark>phone</v-icon>{{ project.accountablePerson[0].telephone }}</div>
+                      <a class="white--text" :href="'mailto:'+project.accountablePerson[0].email[0]"><v-icon dark>mail</v-icon> {{ project.accountablePerson[0].email[0] }}</a>
+
                     </v-card-title>
                 </v-flex>
                 <v-flex class="pb-4 pt-4 pr-4"xs12 lg4>
@@ -88,10 +89,10 @@
 </template>
 
 <script>
-import DRUPAL from '../http';
+import HELPERS from '../helpers';
 
 export default {
-  mixins: [DRUPAL],
+  mixins: [HELPERS],
   data: () => ({
     toFetch: {
       splash: 'full\\22',
@@ -112,13 +113,7 @@ export default {
     this.onResize();
   },
   methods: {
-    onResize() {
-      this.windowSize = { x: window.innerWidth, y: window.innerHeight - 64 };
-    },
-    goTo(dest) {
-      const el = `#p${dest}`;
-      this.$scrollTo(el, 1500);
-    },
+
   },
 };
 </script>

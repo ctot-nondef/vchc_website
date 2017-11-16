@@ -56,10 +56,10 @@
 </template>
 
 <script>
-import DRUPAL from '../http';
+import HELPERS from '../helpers';
 
 export default {
-  mixins: [DRUPAL],
+  mixins: [HELPERS],
   data: () => ({
     toFetch: {
       mission: 'full\\9',
@@ -80,9 +80,6 @@ export default {
     this.onResize();
   },
   methods: {
-    onResize() {
-      this.windowSize = { x: window.innerWidth, y: window.innerHeight - 64 };
-    },
   },
 };
 </script>

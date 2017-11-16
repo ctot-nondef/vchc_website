@@ -58,11 +58,11 @@
 </template>
 
 <script>
-  import DRUPAL from '../http';
+  import HELPERS from '../helpers';
 
   export default {
     /* eslint no-console: ["error", { allow: ["log"] }] */
-    mixins: [DRUPAL],
+    mixins: [HELPERS],
     data() {
       return {
         fixed: false,
@@ -70,7 +70,7 @@
       };
     },
     beforeRouteEnter: (to, from, next) => {
-      DRUPAL.methods.get(`${to.params.lang}\\menu`).then((response) => {
+      HELPERS.methods.get(`${to.params.lang}\\menu`).then((response) => {
         next(vm => vm.setData(response.data));
       });
     },

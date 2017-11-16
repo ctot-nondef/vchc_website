@@ -24,8 +24,9 @@
                           <div>
                             <h6>{{ person.firstName }} {{ person.lastName }}</h6>
                           </div>
-                          <div>Tel: {{ person.telephone }}</div>
-                          <a class="white--text" :href="'mailto:'+person.email[0]">Mail: {{ person.email[0] }}</a>
+                          <div><v-icon dark>phone</v-icon>{{ person.telephone }}</div>
+                          <a class="white--text" :href="'mailto:'+person.email[0]"><v-icon dark>mail</v-icon> {{ person.email[0] }}</a>
+                          <a class="white--text" :href="person.sameAs[0].url"><v-icon dark>home</v-icon> {{ person.sameAs[0].text }}</a>
                         </v-card-title>
                     </v-flex>
                     <v-flex class="pb-4 pt-4 pr-4" xs12 md4>
@@ -59,13 +60,14 @@
                 <v-container fluid grid-list-sm>
                   <v-layout row wrap>
                     <v-flex xs12 md7>
-                        <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
-                          <div>
-                            <h6>{{ person.firstName }} {{ person.lastName }}</h6>
-                          </div>
-                          <div>Tel: {{ person.telephone }}</div>
-                          <a class="white--text" :href="'mailto:'+person.email[0]">Mail: {{ person.email[0] }}</a>
-                        </v-card-title>
+                      <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
+                        <div>
+                          <h6>{{ person.firstName }} {{ person.lastName }}</h6>
+                        </div>
+                        <div><v-icon dark>phone</v-icon>{{ person.telephone }}</div>
+                        <a class="white--text" :href="'mailto:'+person.email[0]"><v-icon dark>mail</v-icon> {{ person.email[0] }}</a>
+                        <a class="white--text" :href="person.sameAs[0].url"><v-icon dark>home</v-icon> {{ person.sameAs[0].text }}</a>
+                      </v-card-title>
                     </v-flex>
                     <v-flex class="pb-4 pt-4 pr-4" xs12 md4>
                       <v-avatar size="180px" v-if="person.image[0]">
@@ -88,13 +90,14 @@
                 <v-container fluid grid-list-sm>
                   <v-layout row wrap>
                     <v-flex xs12 md7>
-                        <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
-                          <div>
-                            <h6>{{ person.firstName }} {{ person.lastName }}</h6>
-                          </div>
-                          <div>Tel: {{ person.telephone }}</div>
-                          <a class="white--text" :href="'mailto:'+person.email[0]">Mail: {{ person.email[0] }}</a>
-                        </v-card-title>
+                      <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
+                        <div>
+                          <h6>{{ person.firstName }} {{ person.lastName }}</h6>
+                        </div>
+                        <div><v-icon dark>phone</v-icon>{{ person.telephone }}</div>
+                        <a class="white--text" :href="'mailto:'+person.email[0]"><v-icon dark>mail</v-icon> {{ person.email[0] }}</a>
+                        <a class="white--text" :href="person.sameAs[0].url"><v-icon dark>home</v-icon> {{ person.sameAs[0].text }}</a>
+                      </v-card-title>
                     </v-flex>
                     <v-flex class="pb-4 pt-4 pr-4" xs12 md4>
                       <v-avatar size="180px" v-if="person.image[0]">
@@ -127,13 +130,14 @@
                 <v-container fluid grid-list-sm align-content-space-between>
                   <v-layout row wrap >
                     <v-flex xs12 md7>
-                        <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
-                          <div>
-                            <h6>{{ person.firstName }} {{ person.lastName }}</h6>
-                          </div>
-                          <div>Tel: {{ person.telephone }}</div>
-                          <a class="white--text" :href="'mailto:'+person.email[0]">Mail: {{ person.email[0] }}</a>
-                        </v-card-title>
+                      <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
+                        <div>
+                          <h6>{{ person.firstName }} {{ person.lastName }}</h6>
+                        </div>
+                        <div><v-icon dark>phone</v-icon>{{ person.telephone }}</div>
+                        <a class="white--text" :href="'mailto:'+person.email[0]"><v-icon dark>mail</v-icon> {{ person.email[0] }}</a>
+                        <a class="white--text" :href="person.sameAs[0].url"><v-icon dark>home</v-icon> {{ person.sameAs[0].text }}</a>
+                      </v-card-title>
                     </v-flex>
                     <v-flex class="pb-4 pt-4 pr-4" xs12 md4>
                       <v-avatar size="180px" v-if="person.image[0]">
@@ -174,10 +178,10 @@
 </template>
 
 <script>
-import DRUPAL from '../http';
+import HELPERS from '../helpers';
 
 export default {
-  mixins: [DRUPAL],
+  mixins: [HELPERS],
   data: () => ({
     toFetch: {
       splash: 'full\\27',
@@ -200,13 +204,6 @@ export default {
   },
   methods: {
     /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
-    onResize() {
-      this.windowSize = { x: window.innerWidth, y: window.innerHeight - 64 };
-    },
-    goTo(dest) {
-      const el = `#p${dest}`;
-      this.$scrollTo(el, 1500);
-    },
     employees(type) {
       return this.persons.filter(function a(person) {
         return person.hasPosition === type;
@@ -218,12 +215,6 @@ export default {
       });
     },
   },
-  filters: {
-    position(v, a) {
-      console.log(v, a);
-      return v;
-    },
-  },
 };
 </script>
 
@@ -232,6 +223,5 @@ export default {
 .projectcard {
   background-color: rgba(0, 50, 99, 0.5);
   border-left: 20px solid rgb(0,50,99)!important;
-  height:100%!important;
 }
 </style>

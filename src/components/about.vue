@@ -25,10 +25,10 @@
 </template>
 
 <script>
-import DRUPAL from '../http';
+import HELPERS from '../helpers';
 
 export default {
-  mixins: [DRUPAL],
+  mixins: [HELPERS],
   data: () => ({
     toFetch: {
       splash: 'full\\30',

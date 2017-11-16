@@ -32,5 +32,12 @@ export default {
         this.loading = false;
       });
     },
+    goTo(dest) {
+      const el = `#p${dest}`;
+      this.$scrollTo(el, 1500);
+    },
+    onResize() {
+      this.windowSize = { x: window.innerWidth, y: window.innerHeight - 64 };
+    },
   },
 };

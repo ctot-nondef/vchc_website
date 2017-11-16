@@ -25,10 +25,10 @@
 </template>
 
 <script>
-import DRUPAL from '../http';
+import HELPERS from '../helpers';
 
 export default {
-  mixins: [DRUPAL],
+  mixins: [HELPERS],
   data: () => ({
     toFetch: {
       splash: 'full\\29',
@@ -48,13 +48,6 @@ export default {
     this.onResize();
   },
   methods: {
-    onResize() {
-      this.windowSize = { x: window.innerWidth, y: window.innerHeight - 64 };
-    },
-    goTo(dest) {
-      const el = `#p${dest}`;
-      this.$scrollTo(el, 1500);
-    },
   },
 };
 </script>
