@@ -19,6 +19,7 @@ import {
   transitions,
   VSpeedDial,
   VAvatar,
+  VMenu,
 } from 'vuetify';
 import Carousel3d from 'vue-carousel-3d';
 import VueScrollTo from 'vue-scrollto';
@@ -43,6 +44,7 @@ Vue.use(
       transitions,
       VSpeedDial,
       VAvatar,
+      VMenu,
     } });
 
 Vue.use(VueAxios, axios);

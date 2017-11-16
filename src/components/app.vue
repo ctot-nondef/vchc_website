@@ -10,7 +10,16 @@
             </router-link>
           </v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-toolbar-side-icon class="hidden-lg-and-up"></v-toolbar-side-icon>
+          <div class="text-xs-center hidden-lg-and-up">
+            <v-menu offset-y>
+              <v-btn color="accent" class="elevation-5" dark icon slot="activator"><v-icon>list</v-icon></v-btn>
+              <v-list >
+                <v-list-tile v-for="item in items" :key="item.tid[0].value" :to="{name: item.field_path[0].value}">
+                  <v-list-tile-title>{{ item.name[0].value }}</v-list-tile-title>
+                </v-list-tile>
+              </v-list>
+            </v-menu>
+          </div>
           <v-toolbar-items class="hidden-md-and-down">
             <v-btn color="white" flat v-for="item in items" :key="item.tid[0].value" :to="{name: item.field_path[0].value}">{{ item.name[0].value }}</v-btn>
             <v-speed-dial top right direction="bottom">
