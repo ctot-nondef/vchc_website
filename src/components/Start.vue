@@ -10,14 +10,14 @@
         >
           <div class="layer"></div>
           <v-layout v-html="splash.mainContentOfPage" column align-center justify-center></v-layout>
-          <v-btn icon dark color="accent">
+          <v-btn icon dark color="accent" v-on:click="goTo('mission')">
             <v-icon>expand_more</v-icon>
           </v-btn>
         </v-layout>
       </v-parallax>
     </section>
 
-    <section>
+    <section id="nodemission">
       <v-layout
         column
         wrap

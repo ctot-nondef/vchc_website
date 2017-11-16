@@ -45,18 +45,15 @@
           <h4 class="white--text pagecaption">{{ project.headline }}</h4>
         </v-layout>
       </v-parallax>
-      <v-container grid-list-xl text-xs-center class="mt-5 mb-5">
-        <v-layout class="pt-5 pb-5" row wrap align-start>
-        <v-flex xs12 md4>
-          <div justify-center>
-            <span class="subheading" style="text-align: justify;"></span>
-          </div>
+      <v-container grid-list-md text-xs-center class="mt-5 mb-5" >
+        <v-layout class="pt-5 pb-5" row wrap align-start justify-center>
+        <v-flex xs12 md6 lg5>
           <div justify-center>
             <span class="subheading" style="text-align: justify;" v-html="project.description"></span>
           </div>
         </v-flex>
-        <v-flex xs0 md1></v-flex>
-        <v-flex xs12 md7 lg6 xl4>
+        <v-flex xs0 md12 lg1 hidden-sm-and-down></v-flex>
+        <v-flex xs12 md6 lg6 xl4>
           <v-card class="elevation-5 projectcard white--text">
             <v-container fluid grid-list-sm>
               <v-layout row wrap>
