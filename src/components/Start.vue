@@ -18,6 +18,24 @@
     </section>
 
     <section id="nodemission">
+      <v-container grid-list-md text-xs-center class="mt-5 mb-5" >
+        <v-layout class="pt-5 pb-5" row wrap align-start justify-center>
+        <v-flex xs12 md6 lg5>
+          <h2 class="headline" v-html="mission.headline"></h2>
+          <div justify-center >
+            <span class="subheading" style="text-align: justify;" v-html="mission.mainContentOfPage"></span>
+          </div>
+        </v-flex>
+        <v-flex xs0 md12 lg1 hidden-sm-and-down></v-flex>
+        <v-flex xs12 md6 lg6 xl4>
+          <v-layout column align-center >
+            <v-flex v-for="img in mission.imagefull">
+              <img :src="img.url" style="max-width:450px;" >
+            </v-flex>
+          </v-layout>
+        </v-flex>
+        </v-layout>
+      </v-container>
       <v-layout
         column
         wrap
@@ -26,8 +44,7 @@
       >
         <v-flex xs12 sm4 class="my-3">
           <div class="text-xs-center">
-            <h2 class="headline" v-html="mission.headline"></h2>
-            <span class="subheading" v-html="mission.mainContentOfPage"></span>
+
           </div>
         </v-flex>
       </v-layout>
