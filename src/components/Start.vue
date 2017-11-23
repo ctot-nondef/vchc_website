@@ -27,7 +27,7 @@
           </div>
         </v-flex>
         <v-flex xs0 md12 lg1 hidden-sm-and-down></v-flex>
-        <v-flex xs12 md6 lg6 xl4>
+        <v-flex lg6 xl4 hidden-sm-and-down>
           <v-layout column align-center >
             <v-flex v-for="img in mission.imagefull">
               <img :src="img.url" style="max-width:450px;" >
