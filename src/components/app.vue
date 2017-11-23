@@ -1,6 +1,6 @@
 <template>
     <v-app light>
-      <v-toolbar fixed app class="elevation-0 primary">
+      <v-toolbar app fixed class="elevation-0 primary">
           <v-toolbar-title>
             <router-link :to="{ name: 'start' }">
               <div class="logo">
@@ -60,8 +60,14 @@
             <router-view name="Content"></router-view>
         </v-slide-y-transition>
       </main>
-      <v-footer :fixed="fixed" app>
-        <span>&copy; 2017</span>
+      <v-footer color="primary"  app>
+        <v-container grid-list-md text-xs-center v-if="!loading">
+          <v-layout row wrap>
+            <v-flex v-for="logo in footer.imagefull">
+              <img :src="logo.url" height="150">
+            </v-flex>
+          </v-layout>
+        </v-container>
       </v-footer>
     </v-app>
 </template>
@@ -72,12 +78,13 @@
   export default {
     /* eslint no-console: ["error", { allow: ["log"] }] */
     mixins: [HELPERS],
-    data() {
-      return {
-        fixed: false,
-        items: [],
-      };
-    },
+    data: () => ({
+      toFetch: {
+        footer: 'full\\50',
+      },
+      items: null,
+      loading: true,
+    }),
     beforeRouteEnter: (to, from, next) => {
       HELPERS.methods.get(`${to.params.lang}\\menu`).then((response) => {
         next(vm => vm.setData(response.data));
