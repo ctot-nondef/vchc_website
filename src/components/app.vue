@@ -61,10 +61,10 @@
         </v-slide-y-transition>
       </main>
       <v-footer color="primary"  app>
-        <v-container grid-list-md text-xs-center v-if="!loading">
-          <v-layout row wrap>
+        <v-container grid-list-md text-xs-center v-if="!loading" >
+          <v-layout row wrap align-center >
             <v-flex v-for="logo in footer.imagefull">
-              <img :src="logo.url" height="150">
+              <img :src="logo.url" style="max-height:150px;max-width:150px;" >
             </v-flex>
           </v-layout>
         </v-container>
