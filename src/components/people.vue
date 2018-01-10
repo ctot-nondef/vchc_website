@@ -26,7 +26,7 @@
                           </div>
                           <div><v-icon dark>phone</v-icon>{{ person.telephone }}</div>
                           <a class="white--text" :href="'mailto:'+person.email[0]"><v-icon dark>mail</v-icon> {{ person.email[0] }}</a>
-                          <a class="white--text" :href="person.sameAs[0].url"><v-icon dark>home</v-icon> {{ person.sameAs[0].text }}</a>
+                          <a class="white--text"  v-if="person.sameAs[0]" :href="person.sameAs[0].url"><v-icon dark>home</v-icon> {{ person.sameAs[0].text }}</a>
                         </v-card-title>
                     </v-flex>
                     <v-flex class="pb-4 pt-4 pr-4" xs12 md4>
@@ -40,6 +40,19 @@
                     <v-flex xs12>
                         <v-card-text v-html="person.description">
                         </v-card-text>
+                    </v-flex>
+                    <v-flex  xs12>
+                      <h6 class="pl-3">Projects</h6>
+                      <v-list class="transparent" dark>
+                        <v-list-tile avatar dark v-for="project in fprojects(person.email[0])" v-bind:key="project.name" :to="{name: 'projects', params: { scrollTo: project.name }}">
+                          <v-list-tile-content>
+                            <v-list-tile-title>{{ project.headline }}</v-list-tile-title>
+                          </v-list-tile-content>
+                          <v-list-tile-avatar>
+                            <img v-bind:src="project.thumbnailUrl.url"/>
+                          </v-list-tile-avatar>
+                        </v-list-tile>
+                      </v-list>
                     </v-flex>
                   </v-layout>
                 </v-container>
@@ -66,7 +79,7 @@
                         </div>
                         <div><v-icon dark>phone</v-icon>{{ person.telephone }}</div>
                         <a class="white--text" :href="'mailto:'+person.email[0]"><v-icon dark>mail</v-icon> {{ person.email[0] }}</a>
-                        <a class="white--text" :href="person.sameAs[0].url"><v-icon dark>home</v-icon> {{ person.sameAs[0].text }}</a>
+                        <a class="white--text"  v-if="person.sameAs[0]" :href="person.sameAs[0].url"><v-icon dark>home</v-icon> {{ person.sameAs[0].text }}</a>
                       </v-card-title>
                     </v-flex>
                     <v-flex class="pb-4 pt-4 pr-4" xs12 md4>
@@ -84,7 +97,7 @@
                     <v-flex>
                     <v-card-text v-html="person.description"></v-card-text>
                     </v-flex>
-                    <v-flex>
+                    <v-flex xs12>
                       <h6 class="pl-3">Projects</h6>
                       <v-list class="transparent" dark>
                         <v-list-tile avatar dark v-for="project in fprojects(person.email[0])" v-bind:key="project.name" :to="{name: 'projects', params: { scrollTo: project.name }}">
