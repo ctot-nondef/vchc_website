@@ -17,43 +17,30 @@
                 <v-list-tile v-for="item in items" :key="item.tid[0].value" :to="{name: item.field_path[0].value}">
                   <v-list-tile-title>{{ item.name[0].value }}</v-list-tile-title>
                 </v-list-tile>
+                <v-btn-toggle color="white">
+                  <v-btn small fab :to="{ name: this.$route.name, params: { lang: 'de' }}" flat >
+                    DE
+                  </v-btn>
+                  <span >|</span>
+                  <v-btn small fab :to="{ name: this.$route.name, params: { lang: 'en' }}" flat >
+                    EN
+                  </v-btn>
+                </v-btn-toggle>
               </v-list>
             </v-menu>
           </div>
           <v-toolbar-items class="hidden-md-and-down">
             <v-btn color="white" flat v-for="item in items" :key="item.tid[0].value" :to="{name: item.field_path[0].value}">{{ item.name[0].value }}</v-btn>
-            <v-speed-dial top right direction="bottom">
-                  <v-btn
-                    slot="activator"
-                    color="accent"
-                    dark
-                    fab
-                    hover
-                  >
-                    <v-icon>language</v-icon>
-                  </v-btn>
-                  <router-link :to="{ name: this.$route.name, params: { lang: 'en' }}">
-                    <v-btn
-                      fab
-                      dark
-                      small
-                      color="accent"
-                    >
-                      EN
-                    </v-btn>
-                  </router-link>
-                  <router-link :to="{ name: this.$route.name, params: { lang: 'de' }}">
-                    <v-btn
-                      fab
-                      dark
-                      small
-                      color="accent"
-                    >
-                      DE
-                    </v-btn>
-                  </router-link>
-                </v-speed-dial>
           </v-toolbar-items>
+          <v-btn-toggle color="white" class="hidden-md-and-down">
+            <v-btn small fab :to="{ name: this.$route.name, params: { lang: 'de' }}" flat color="white">
+              DE
+            </v-btn>
+            <span style="color:white">|</span>
+            <v-btn small fab :to="{ name: this.$route.name, params: { lang: 'en' }}" flat color="white">
+              EN
+            </v-btn>
+          </v-btn-toggle>
       </v-toolbar>
       <main>
         <v-slide-y-transition mode="out-in">
