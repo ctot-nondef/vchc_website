@@ -13,11 +13,11 @@
           <div class="text-xs-center hidden-lg-and-up">
             <v-menu offset-y>
               <v-btn color="accent" class="elevation-5" dark icon slot="activator"><v-icon>list</v-icon></v-btn>
-              <v-list >
+              <v-list v-if="!loading">
                 <v-list-tile v-for="item in items" :key="item.tid[0].value" :to="{name: item.field_path[0].value}">
                   <v-list-tile-title>{{ item.name[0].value }}</v-list-tile-title>
                 </v-list-tile>
-                <v-btn-toggle color="white">
+                <div color="white">
                   <v-btn small fab :to="{ name: this.$route.name, params: { lang: 'de' }}" flat >
                     DE
                   </v-btn>
@@ -25,7 +25,7 @@
                   <v-btn small fab :to="{ name: this.$route.name, params: { lang: 'en' }}" flat >
                     EN
                   </v-btn>
-                </v-btn-toggle>
+                </div>
               </v-list>
             </v-menu>
           </div>
@@ -68,15 +68,12 @@
     data: () => ({
       toFetch: {
         footer: 'full\\50',
+        footermenu: 'menu?vid=footer',
+        items: 'menu?vid=menu',
       },
       items: null,
       loading: true,
     }),
-    beforeRouteEnter: (to, from, next) => {
-      HELPERS.methods.get(`${to.params.lang}\\menu`).then((response) => {
-        next(vm => vm.setData(response.data));
-      });
-    },
     watch: {
       // reload data if language is swapped
       $route(to, from) {
@@ -86,9 +83,6 @@
       },
     },
     methods: {
-      setData(menu) {
-        this.items = menu;
-      },
     },
     route: {
       canReuse: false,
