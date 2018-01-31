@@ -59,8 +59,8 @@ export default new Router({
           },
         },
         {
-          path: 'about',
-          name: 'about',
+          path: 'imprint',
+          name: 'imprint',
           components: {
             Content: about,
           },
