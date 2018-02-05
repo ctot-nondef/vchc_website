@@ -32,6 +32,8 @@ export default {
   data: () => ({
     toFetch: {
       splash: 'full\\31',
+      events: 'teaser\\?type=event',
+      persons: 'teaser\\?type=person',
     },
     windowSize: {
       x: window.innerWidth,
@@ -40,10 +42,6 @@ export default {
     menu: null,
     loading: true,
   }),
-  created() {
-    /* eslint no-console: ["error", { allow: ["log"] }] */
-    this.batchget(this.toFetch);
-  },
   mounted() {
     this.onResize();
   },
