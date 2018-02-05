@@ -20,6 +20,8 @@ import {
   VSpeedDial,
   VAvatar,
   VMenu,
+  VDataTable,
+  VPagination,
 } from 'vuetify';
 import Carousel3d from 'vue-carousel-3d';
 import VueScrollTo from 'vue-scrollto';
@@ -46,6 +48,8 @@ Vue.use(
       VSpeedDial,
       VAvatar,
       VMenu,
+      VDataTable,
+      VPagination,
     } });
 
 Vue.use(VueAxios, axios);
