@@ -218,9 +218,18 @@ export default {
       });
     },
     fprojects(person) {
-      return this.projects.filter(function a(project) {
-        return project.accountablePerson[0].email[0] === person;
+      /* eslint no-console: ["error", { allow: ["log"] }] */
+      /* eslint max-len: ["error", { "code": 200 }] */
+      const a = this.projects.filter(function a(project) {
+        if (project.accountablePerson[0].email[0] === person) {
+          return true;
+        } else if (project.accountablePerson[1] && project.accountablePerson[1].email[0] === person) {
+          return true;
+        }
+        return false;
       });
+      console.log(a);
+      return a;
     },
   },
 };
