@@ -23,11 +23,9 @@ export default {
         idx -= 1;
       }
       return HTTP.all(promises).then((res) => {
-        console.log(res);
         let idn = a.length - 1;
         while (idn > -1) {
-          if (res[idn].data.length === 1) this[a[idn][0]] = res[idn].data[0];
-          else this[a[idn][0]] = res[idn].data;
+          this[a[idn][0]] = res[idn].data;
           idn -= 1;
         }
         this.loading = false;
@@ -45,6 +43,7 @@ export default {
     /* eslint no-console: ["error", { allow: ["log"] }] */
     if (this.toFetch) {
       this.batchget(this.toFetch).then(() => {
+        console.log(this.pastevents);
         if (this.scrollTo) {
           this.goTo(this.scrollTo);
         }

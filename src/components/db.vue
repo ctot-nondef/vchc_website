@@ -1,10 +1,10 @@
 <template>
   <v-content v-if="!loading">
     <section>
-      <v-parallax  v-bind:src="splash.banner.url" height="380">
+      <v-parallax  v-bind:src="splash[0].banner.url" height="380">
         <v-layout column align-center justify-center>
           <div class="layer"></div>
-          <h4 class="white--text pagecaption">{{ splash.headline }}</h4>
+          <h4 class="white--text pagecaption">{{ splash[0].headline }}</h4>
         </v-layout>
       </v-parallax>
       <v-layout
@@ -15,7 +15,7 @@
       >
         <v-flex xs12 sm4 class="my-3">
           <div class="text-xs-center">
-            <span class="subheading"  style="text-align: justify;" v-html="splash.mainContentOfPage"></span>
+            <span class="subheading"  style="text-align: justify;" v-html="splash[0].mainContentOfPage"></span>
           </div>
         </v-flex>
       </v-layout>

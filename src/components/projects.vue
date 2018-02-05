@@ -1,10 +1,10 @@
 <template>
   <v-content v-if="!loading">
     <section class="pb-5">
-      <v-parallax  v-bind:src="splash.banner.url" height="380">
+      <v-parallax  v-bind:src="splash[0].banner.url" height="380">
         <v-layout column align-center justify-center>
           <div class="layer"></div>
-          <h4 class="white--text pagecaption">{{ splash.headline }}</h4>
+          <h4 class="white--text pagecaption">{{ splash[0].headline }}</h4>
         </v-layout>
       </v-parallax>
     </section>

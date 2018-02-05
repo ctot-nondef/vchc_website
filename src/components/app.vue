@@ -51,7 +51,7 @@
         <v-layout column>
             <v-flex xs12 class="mt-5 mb-5">
               <v-layout row wrap>
-                <v-flex v-for="logo in footer.imagefull" xs12 sm6 md4 class="text-xs-center mt-5 mb-5" >
+                <v-flex v-for="logo in footer[0].imagefull" xs12 sm6 md4 class="text-xs-center mt-5 mb-5" >
                   <img align-center :src="logo.url" style="max-height:150px;max-width:150px;" >
                 </v-flex>
               </v-layout>
