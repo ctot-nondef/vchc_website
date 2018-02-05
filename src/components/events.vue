@@ -24,7 +24,7 @@
         <v-container grid-list-xl>
           <v-layout row wrap>
             <v-flex xs12>
-              <h4 class="pagecaption">Upcoming</h4>
+              <h4 class="pagecaption">Past</h4>
               <hr class="separator">
             </v-flex>
             <v-flex xs12 lg6 xl4  v-for="event in pastevents" :key="event.name">
@@ -34,13 +34,15 @@
                   </v-card-media>
                   <v-card-title primary-title>
                     <h6>{{ event.headline }}</h6>
+                    <div><v-icon dark>event</v-icon> {{ event.startDate | moment("dddd, Do MMM YYYY, h:mm a") }} - {{ event.endDate | moment("dddd, Do MMM YYYY, h:mm a") }}</div>
+                    <div><v-icon dark>place</v-icon> {{ event.location }}</div>
                   </v-card-title>
+                  <v-card-text v-html="event.description"></v-card-text>
                   <v-card-actions class="text-xs-right pb-4">
                     <v-layout row justify-space-between align-end>
                       <v-flex></v-flex>
                       <v-flex>
-                        <v-btn dark class="accent" v-on:click="goTo(project.name)">DETAILS</v-btn>
-                        <v-btn dark class="accent" v-on:click="goTo(project.name)">DOWNLOAD</v-btn>
+                        <v-btn v-for="download in event.workFeatured" dark class="accent" :href="download.url" target="_blank">{{download.description}}</v-btn>
                       </v-flex>
                     </v-layout>
                   </v-card-actions>
