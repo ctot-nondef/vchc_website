@@ -54,30 +54,34 @@
         </v-flex>
         <v-flex xs0 md12 lg1 hidden-sm-and-down></v-flex>
         <v-flex xs12 md6 lg6 xl4>
-          <v-card class="elevation-5 projectcard white--text">
-            <v-container fluid grid-list-sm>
-              <v-layout row wrap>
-                <v-flex xs12 lg7>
-                  <v-card-title primary-title style="flex-direction: column; align-items: flex-start;" >
-                    <div>
-                      <h6>{{ project.accountablePerson[0].first_name }} {{ project.accountablePerson[0].last_name }}</h6>
-                    </div>
-                    <div><v-icon dark>phone</v-icon>{{ project.accountablePerson[0].telephone }}</div>
-                    <a class="white--text" :href="'mailto:'+project.accountablePerson[0].email[0]"><v-icon dark>mail</v-icon> {{ project.accountablePerson[0].email[0] }}</a>
-                    <v-btn dark class="accent" :to="{name: 'people', params: { scrollTo: project.accountablePerson[0].id }}">DETAILS</v-btn>
-                  </v-card-title>
-                </v-flex>
-                <v-flex class="pb-4 pt-4 pr-4"xs12 lg4>
-                  <v-avatar size="180px" v-if="project.accountablePerson[0].image">
-                    <img :src="project.accountablePerson[0].image[0].url" alt="avatar">
-                  </v-avatar>
-                  <v-avatar size="180px" v-if="!project.accountablePerson[0].image">
-                    <v-icon x-large dark >person</v-icon>
-                  </v-avatar>
-                </v-flex>
-              </v-layout>
-            </v-container>
-          </v-card>
+          <v-layout column justify-space-between>
+            <v-flex v-for="person in project.accountablePerson">
+              <v-card class="elevation-5 projectcard white--text">
+                <v-container fluid grid-list-sm>
+                  <v-layout row wrap>
+                    <v-flex xs12 lg7>
+                      <v-card-title primary-title style="flex-direction: column; align-items: flex-start;" >
+                        <div>
+                          <h6>{{ person.first_name }} {{ person.last_name }}</h6>
+                        </div>
+                        <div><v-icon dark>phone</v-icon>{{ person.telephone }}</div>
+                        <a class="white--text" :href="'mailto:'+person.email[0]"><v-icon dark>mail</v-icon> {{ person.email[0] }}</a>
+                        <v-btn dark class="accent" :to="{name: 'people', params: { scrollTo: person.id }}">DETAILS</v-btn>
+                      </v-card-title>
+                    </v-flex>
+                    <v-flex class="pb-4 pt-4 pr-4"xs12 lg4>
+                      <v-avatar size="180px" v-if="person.image">
+                        <img :src="person.image[0].url" alt="avatar">
+                      </v-avatar>
+                      <v-avatar size="180px" v-if="!person.image">
+                        <v-icon x-large dark >person</v-icon>
+                      </v-avatar>
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+              </v-card>
+            </v-flex>
+          </v-layout>
         </v-flex>
         </v-layout>
       </v-container>
