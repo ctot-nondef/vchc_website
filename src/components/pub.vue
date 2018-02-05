@@ -19,6 +19,7 @@
           </div>
         </v-flex>
       </v-layout>
+      <zoterotable></zoterotable>
     </section>
 
   </v-content>
@@ -26,9 +27,13 @@
 
 <script>
 import HELPERS from '../helpers';
+import zoterotable from '../components/zoterotable';
 
 export default {
   mixins: [HELPERS],
+  components: {
+    zoterotable,
+  },
   data: () => ({
     toFetch: {
       splash: 'full\\28',
