@@ -20,12 +20,13 @@ export default {
     getItem() {
     },
     getLibrary(library, p, l, s, d) {
+      this.loading = true;
       const limit = l || CONFIG.limit;
       const page = p || CONFIG.page;
       const sort = s || CONFIG.sort;
       const direction = d || CONFIG.direction;
       /* eslint no-console: ["error", { allow: ["log"] }] */
-      ZOTERO.get(`/users/${library}/items/`, {
+      return ZOTERO.get(`/users/${library}/items/`, {
         params: {
           limit,
           start: limit * (page - 1),
@@ -40,8 +41,9 @@ export default {
     /* eslint no-console: ["error", { allow: ["log"] }] */
     if (this.LibToFetch) {
       this.getLibrary(this.LibToFetch).then((res) => {
-        console.log(res);
-        this.LibData = res;
+        console.log(res.data);
+        this.LibData = res.data;
+        this.loading = false;
       });
     }
   },
