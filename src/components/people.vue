@@ -77,7 +77,7 @@
                         <div>
                           <h6>{{ person.firstName }} {{ person.lastName }}</h6>
                         </div>
-                        <div><v-icon dark>phone</v-icon>{{ person.telephone }}</div>
+                        <div v-if="person.telephone"><v-icon dark>phone</v-icon>{{ person.telephone }}</div>
                         <a class="white--text" :href="'mailto:'+person.email[0]"><v-icon dark>mail</v-icon> {{ person.email[0] }}</a>
                         <a class="white--text"  v-if="person.sameAs[0]" :href="person.sameAs[0].url"><v-icon dark>home</v-icon> {{ person.sameAs[0].text }}</a>
                       </v-card-title>
