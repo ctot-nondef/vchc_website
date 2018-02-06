@@ -23,7 +23,6 @@
                   <v-flex></v-flex>
                   <v-flex>
                     <v-btn dark class="accent" v-on:click="goTo(project.name)">DETAILS</v-btn>
-                    <v-btn dark class="accent" v-on:click="goTo(project.name)">CONTACT</v-btn>
                   </v-flex>
                 </v-layout>
               </v-card-actions>
