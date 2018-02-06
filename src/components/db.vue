@@ -15,7 +15,7 @@
       >
         <v-flex xs12 sm4 class="my-3">
           <div class="text-xs-center">
-            <span class="subheading"  style="text-align: justify;" v-html="splash[0].mainContentOfPage"></span>
+            <span class="subheading"  style="text-align: left;" v-html="splash[0].mainContentOfPage"></span>
           </div>
         </v-flex>
       </v-layout>

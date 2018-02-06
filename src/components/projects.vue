@@ -48,7 +48,7 @@
         <v-layout class="pt-5 pb-5" row wrap align-start justify-center>
         <v-flex xs12 md6 lg5>
           <div justify-center>
-            <span class="subheading" style="text-align: justify;" v-html="project.description"></span>
+            <span class="subheading" style="text-align: left;" v-html="project.description"></span>
           </div>
         </v-flex>
         <v-flex xs0 md12 lg1 hidden-sm-and-down></v-flex>

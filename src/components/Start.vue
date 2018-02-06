@@ -23,7 +23,7 @@
         <v-flex xs12 md6 lg5>
           <h2 class="headline" v-html="mission[0].headline"></h2>
           <div justify-center >
-            <span class="subheading" style="text-align: justify;" v-html="mission[0].mainContentOfPage"></span>
+            <span class="subheading" style="text-align: left;" v-html="mission[0].mainContentOfPage"></span>
           </div>
         </v-flex>
         <v-flex xs0 md12 lg1 hidden-sm-and-down></v-flex>
