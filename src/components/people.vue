@@ -212,13 +212,13 @@ export default {
   },
   methods: {
     /* eslint prefer-arrow-callback: [ "error", { "allowNamedFunctions": true } ] */
+    // TODO: these should be filters
     employees(type) {
       return this.persons.filter(function a(person) {
         return person.hasPosition === type;
       });
     },
     fprojects(person) {
-      /* eslint no-console: ["error", { allow: ["log"] }] */
       /* eslint max-len: ["error", { "code": 200 }] */
       const a = this.projects.filter(function a(project) {
         if (project.accountablePerson[0].email[0] === person) {
@@ -228,7 +228,6 @@ export default {
         }
         return false;
       });
-      console.log(a);
       return a;
     },
   },

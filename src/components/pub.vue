@@ -18,7 +18,7 @@
             <span class="subheading" v-html="splash[0].mainContentOfPage"></span>
           </div>
         </v-flex>
-        <v-flex xs10>
+        <v-flex xs10 >
           <zoterotable></zoterotable>
         </v-flex>
       </v-layout>

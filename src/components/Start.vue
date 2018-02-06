@@ -89,10 +89,6 @@ export default {
     },
     loading: true,
   }),
-  created() {
-    /* eslint no-console: ["error", { allow: ["log"] }] */
-    this.batchget(this.toFetch);
-  },
   mounted() {
     this.onResize();
   },
