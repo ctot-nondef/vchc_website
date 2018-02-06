@@ -20,7 +20,6 @@ export default {
     getItem() {
     },
     getLibrary(library, p, l, s, d) {
-      this.loading = true;
       const limit = l || CONFIG.limit;
       const page = p || CONFIG.page;
       const sort = s || CONFIG.sort;
@@ -36,15 +35,5 @@ export default {
         },
       });
     },
-  },
-  created() {
-    /* eslint no-console: ["error", { allow: ["log"] }] */
-    if (this.LibToFetch) {
-      this.getLibrary(this.LibToFetch).then((res) => {
-        console.log(res.data);
-        this.LibData = res.data;
-        this.loading = false;
-      });
-    }
   },
 };

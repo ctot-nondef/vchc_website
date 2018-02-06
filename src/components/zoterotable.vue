@@ -3,9 +3,9 @@
       <v-data-table
         v-bind:headers="headers"
         v-bind:items="LibData"
-        v-bind:search="search"
         v-bind:pagination.sync="pagination"
-        hide-actions
+        :total-items="totalItems"
+        :loading="loading"
         class="elevation-1"
       >
         <template slot="items" slot-scope="props">
@@ -15,9 +15,6 @@
           <td  class="text-xs-right">{{ props.item.data.creators[0].firstName }}{{ props.item.data.creators[0].lastName }}</td>
         </template>
       </v-data-table>
-      <div class="text-xs-center pt-2">
-        <v-pagination v-model="pagination.page" :length="pages"></v-pagination>
-      </div>
   </v-content>
 </template>
 
@@ -30,6 +27,7 @@ export default {
   data: () => ({
     LibToFetch: '3808523',
     loading: true,
+    totalItems: 42,
     search: '',
     pagination: {
       rowsPerPage: 10,
@@ -39,7 +37,6 @@ export default {
       {
         text: 'Title',
         align: 'left',
-        sortable: false,
         value: 'name',
       },
       { text: 'Publication Date', value: 'pubdate' },
@@ -47,7 +44,24 @@ export default {
       { text: 'Author', value: 'author' },
     ],
   }),
+  watch: {
+    'pagination.page': 'fetchLib',
+    'pagination.rowsPerPage': 'fetchLib',
+  },
+  created() {
+    /* eslint no-console: ["error", { allow: ["log"] }] */
+    this.fetchLib();
+  },
   methods: {
+    fetchLib() {
+      this.loading = true;
+      this.getLibrary(this.LibToFetch,
+        this.pagination.page,
+        this.pagination.rowsPerPage).then((res) => {
+          this.LibData = res.data;
+          this.loading = false;
+        });
+    },
   },
 };
 </script>
