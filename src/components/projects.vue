@@ -9,7 +9,7 @@
       </v-parallax>
     </section>
     <section class="pt-5 pb-5">
-      <carousel-3d :width="500" :disable3d="true" :height="400" :space="600" :controls-visible="true">
+      <carousel-3d ref="projectcarousel" :width="500" :disable3d="true" :height="400" :space="600" :controls-visible="true" :controls-prev-html="'&#10092;'" :controls-next-html="'&#10093;'">
         <slide v-for="(project, index) in projects" :index="index" :key="project.name" >
           <v-card class="elevation-5 projectcard white--text"  >
             <v-layout column justify-space-between style="height: 100%!important;">
@@ -30,6 +30,10 @@
           </v-card>
         </slide>
       </carousel-3d>
+      <v-layout row align-center justify-center>
+        <v-btn dark fab large class="accent" v-on:click="$refs.projectcarousel.goPrev()"><v-icon dark>navigate_before</v-icon></v-btn>
+        <v-btn dark fab large class="accent" v-on:click="$refs.projectcarousel.goNext()"><v-icon dark>navigate_next</v-icon></v-btn>
+      </v-layout>
     </section>
     <section class="pt-5 pb-5" v-for="project in projects" :key="project.name" v-bind:id="'node'+project.name">
       <v-parallax v-if="project.primaryImageOfPage" v-bind:src="project.primaryImageOfPage.url" height="380">
