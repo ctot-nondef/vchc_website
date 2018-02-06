@@ -34,22 +34,19 @@ export default {
     },
     selected: [],
     headers: [
-      {
-        text: 'Title',
-        align: 'left',
-        value: 'name',
-      },
-      { text: 'Publication Date', value: 'pubdate' },
-      { text: 'In Series', value: 'series' },
-      { text: 'Author', value: 'author' },
+      { text: 'Title', align: 'left', value: 'title' },
+      { text: 'Publication Date', value: 'date' },
+      { text: 'In Series', value: 'series', sortable: false },
+      { text: 'Author', value: 'creator' },
     ],
   }),
   watch: {
     'pagination.page': 'fetchLib',
     'pagination.rowsPerPage': 'fetchLib',
+    'pagination.sortBy': 'fetchLib',
+    'pagination.descending': 'fetchLib',
   },
   created() {
-    /* eslint no-console: ["error", { allow: ["log"] }] */
     this.fetchLib();
   },
   methods: {
@@ -57,10 +54,13 @@ export default {
       this.loading = true;
       this.getLibrary(this.LibToFetch,
         this.pagination.page,
-        this.pagination.rowsPerPage).then((res) => {
-          this.LibData = res.data;
-          this.loading = false;
-        });
+        this.pagination.rowsPerPage,
+        this.pagination.sortBy,
+        !this.pagination.descending ? 'asc' : 'desc',
+      ).then((res) => {
+        this.LibData = res.data;
+        this.loading = false;
+      });
     },
   },
 };
