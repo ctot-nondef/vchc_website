@@ -30,9 +30,13 @@
           </v-card>
         </slide>
       </carousel-3d>
-      <v-layout row align-center justify-center>
-        <v-btn dark fab large class="accent" v-on:click="$refs.projectcarousel.goPrev()"><v-icon dark>navigate_before</v-icon></v-btn>
-        <v-btn dark fab large class="accent" v-on:click="$refs.projectcarousel.goNext()"><v-icon dark>navigate_next</v-icon></v-btn>
+      <v-layout row align-center justify-center v-if="$refs.projectcarousel">
+        <v-btn dark fab class="accent" v-on:click="$refs.projectcarousel.goPrev()"><v-icon dark>navigate_before</v-icon></v-btn>
+        <div class="" v-for="(project, index) in projects">
+            <v-icon v-if="index==$refs.projectcarousel.currentIndex" >radio_button_checked</v-icon>
+            <v-icon v-if="index!=$refs.projectcarousel.currentIndex" v-on:click="$refs.projectcarousel.goSlide(index)">radio_button_unchecked</v-icon>
+        </div>
+        <v-btn dark fab class="accent" v-on:click="$refs.projectcarousel.goNext()"><v-icon dark>navigate_next</v-icon></v-btn>
       </v-layout>
     </section>
     <section class="pt-5 pb-5" v-for="project in projects" :key="project.name" v-bind:id="'node'+project.name">
