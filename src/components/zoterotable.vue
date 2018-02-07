@@ -11,8 +11,7 @@
         <template slot="items" slot-scope="props">
           <td>{{ props.item.data.title }}</td>
           <td  class="text-xs-right">{{ props.item.data.date }}</td>
-          <td  class="text-xs-right">{{ props.item.data.series }}</td>
-          <td  class="text-xs-right">{{ props.item.data.creators[0].firstName }}{{ props.item.data.creators[0].lastName }}</td>
+          <td  class="text-xs-right">{{ props.item.data.creators[0].firstName }} {{ props.item.data.creators[0].lastName }}</td>
         </template>
       </v-data-table>
   </v-content>
@@ -25,18 +24,17 @@ import ZOTERO from '../zotero';
 export default {
   mixins: [HELPERS, ZOTERO],
   data: () => ({
-    LibToFetch: '3808523',
+    LibToFetch: '2083331',
     loading: true,
-    totalItems: 42,
+    totalItems: 7,
     search: '',
     pagination: {
       rowsPerPage: 10,
     },
     selected: [],
     headers: [
-      { text: 'Title', align: 'left', value: 'title' },
-      { text: 'Publication Date', value: 'date' },
-      { text: 'In Series', value: 'series', sortable: false },
+      { text: 'Titel', align: 'left', value: 'title' },
+      { text: 'Datum', value: 'date' },
       { text: 'Author', value: 'creator' },
     ],
   }),

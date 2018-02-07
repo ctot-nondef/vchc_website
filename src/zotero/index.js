@@ -25,7 +25,7 @@ export default {
       const sort = s || CONFIG.sort;
       const direction = d || CONFIG.direction;
       /* eslint no-console: ["error", { allow: ["log"] }] */
-      return ZOTERO.get(`/users/${library}/items/`, {
+      return ZOTERO.get(`/groups/${library}/items/`, {
         params: {
           limit,
           start: limit * (page - 1),
