@@ -39,9 +39,8 @@
                   </v-card-title>
                   <v-card-text v-html="event.description"></v-card-text>
                   <v-card-actions class="text-xs-right pb-4">
-                    <v-layout row justify-space-between align-end>
-                      <v-flex></v-flex>
-                      <v-flex>
+                    <v-layout row justify-space-around>
+                      <v-flex xs10>
                         <v-btn v-for="download in event.workFeatured" dark class="accent" :href="download.url" target="_blank">{{download.description}}</v-btn>
                       </v-flex>
                     </v-layout>
