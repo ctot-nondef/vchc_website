@@ -43,7 +43,6 @@ export default {
     /* eslint no-console: ["error", { allow: ["log"] }] */
     if (this.toFetch) {
       this.batchget(this.toFetch).then(() => {
-        console.log(this.pastevents);
         if (this.scrollTo) {
           this.goTo(this.scrollTo);
         }

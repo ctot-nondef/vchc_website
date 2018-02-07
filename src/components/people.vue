@@ -98,7 +98,7 @@
                     <v-card-text v-html="person.description"></v-card-text>
                     </v-flex>
                     <v-flex xs12>
-                      <h6 class="pl-3">Projects</h6>
+                      <h6 class="pl-3">Projekte</h6>
                       <v-list class="transparent" dark>
                         <v-list-tile avatar dark v-for="project in fprojects(person.email[0])" v-bind:key="project.name" :to="{name: 'projects', params: { scrollTo: project.name }}">
                           <v-list-tile-content>

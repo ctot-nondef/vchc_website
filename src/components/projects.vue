@@ -30,13 +30,13 @@
           </v-card>
         </slide>
       </carousel-3d>
-      <v-layout row align-center justify-center v-if="$refs.projectcarousel">
-        <v-btn dark fab class="accent" v-on:click="$refs.projectcarousel.goPrev()"><v-icon dark>navigate_before</v-icon></v-btn>
-        <div class="" v-for="(project, index) in projects">
+      <v-layout row align-center justify-center >
+        <v-btn dark class="accent" v-on:click="$refs.projectcarousel.goPrev()"><v-icon dark>navigate_before</v-icon></v-btn>
+        <div class="" v-for="(project, index) in projects" v-if="$refs.projectcarousel">
             <v-icon v-if="index==$refs.projectcarousel.currentIndex" >radio_button_checked</v-icon>
             <v-icon v-if="index!=$refs.projectcarousel.currentIndex" v-on:click="$refs.projectcarousel.goSlide(index)">radio_button_unchecked</v-icon>
         </div>
-        <v-btn dark fab class="accent" v-on:click="$refs.projectcarousel.goNext()"><v-icon dark>navigate_next</v-icon></v-btn>
+        <v-btn dark class="accent" v-on:click="$refs.projectcarousel.goNext()"><v-icon dark>navigate_next</v-icon></v-btn>
       </v-layout>
     </section>
     <section class="pt-5 pb-5" v-for="project in projects" :key="project.name" v-bind:id="'node'+project.name">
@@ -114,8 +114,19 @@ export default {
   }),
   mounted() {
     this.onResize();
+    this.$nextTick(() => {
+      console.log(this.$refs.projectcarousel);
+    });
+    this.$watch(() => this.$refs.projectcarousel,
+      (val, OldVal) => {
+        /* eslint no-console: ["error", { allow: ["log"] }] */
+        console.log(val, OldVal);
+      },
+    );
   },
   methods: {
+  },
+  watch: {
   },
 };
 </script>
