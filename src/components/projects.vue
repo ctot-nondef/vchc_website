@@ -32,9 +32,9 @@
       </carousel-3d>
       <v-layout row align-center justify-center >
         <v-btn dark class="accent" v-on:click="$refs.projectcarousel.goPrev()"><v-icon dark>navigate_before</v-icon></v-btn>
-        <div class="" v-for="(project, index) in projects" v-if="$refs.projectcarousel">
+        <div class="" v-for="(project, index) in projects" v-if="!loadingCarousel">
             <v-icon v-if="index==$refs.projectcarousel.currentIndex" >radio_button_checked</v-icon>
-            <v-icon v-if="index!=$refs.projectcarousel.currentIndex" v-on:click="$refs.projectcarousel.goSlide(index)">radio_button_unchecked</v-icon>
+            <v-icon v-if="index!=$refs.projectcarousel.currentIndex" style="cursor: pointer;" v-on:click="$refs.projectcarousel.goSlide(index)">radio_button_unchecked</v-icon>
         </div>
         <v-btn dark class="accent" v-on:click="$refs.projectcarousel.goNext()"><v-icon dark>navigate_next</v-icon></v-btn>
       </v-layout>
@@ -111,18 +111,15 @@ export default {
       y: window.innerHeight - 64,
     },
     loading: true,
+    loadingCarousel: true,
   }),
   mounted() {
     this.onResize();
     this.$nextTick(() => {
-      console.log(this.$refs.projectcarousel);
+      setTimeout(() => {
+        this.loadingCarousel = false;
+      }, 500);
     });
-    this.$watch(() => this.$refs.projectcarousel,
-      (val, OldVal) => {
-        /* eslint no-console: ["error", { allow: ["log"] }] */
-        console.log(val, OldVal);
-      },
-    );
   },
   methods: {
   },
