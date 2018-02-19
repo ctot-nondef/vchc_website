@@ -45,7 +45,7 @@
                   <v-card-actions class="text-xs-right pb-4">
                     <v-layout row justify-space-around>
                       <v-flex xs10>
-                        <v-btn v-for="download in event.workFeatured" dark class="accent" :href="download.url" target="_blank">{{download.description}}</v-btn>
+                        <v-btn v-for="(download, index) in event.workFeatured" :key="index" dark class="accent" :href="download.url" target="_blank">{{download.description}}</v-btn>
                       </v-flex>
                     </v-layout>
                   </v-card-actions>
@@ -76,7 +76,7 @@
                   <v-card-actions class="text-xs-right pb-4">
                     <v-layout row justify-space-around>
                       <v-flex xs10>
-                        <v-btn v-for="download in event.workFeatured" dark class="accent" :href="download.url" target="_blank">{{download.description}}</v-btn>
+                        <v-btn v-for="(download, index) in event.workFeatured" :key="index" dark class="accent" :href="download.url" target="_blank">{{download.description}}</v-btn>
                       </v-flex>
                     </v-layout>
                   </v-card-actions>

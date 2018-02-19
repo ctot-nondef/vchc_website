@@ -62,7 +62,7 @@
         <v-flex xs0 md12 lg1 hidden-sm-and-down></v-flex>
         <v-flex xs12 md6 lg6 xl4>
           <v-layout column justify-space-between>
-            <v-flex v-for="person in project.accountablePerson">
+            <v-flex v-for="(person, index) in project.accountablePerson" :key="index">
               <v-card class="elevation-5 projectcard white--text">
                 <v-container fluid grid-list-sm>
                   <v-layout row wrap>

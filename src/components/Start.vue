@@ -29,7 +29,7 @@
         <v-flex xs0 md12 lg1 hidden-sm-and-down></v-flex>
         <v-flex lg6 xl4 hidden-sm-and-down>
           <v-layout column align-center >
-            <v-flex v-for="img in mission[0].imagefull">
+            <v-flex v-for="(img, index) in mission[0].imagefull" :key="index">
               <img :src="img.url" style="max-width:450px;" >
             </v-flex>
           </v-layout>
