@@ -124,36 +124,6 @@
               <h4 class="pagecaption">Leitungsgremium</h4>
               <hr class="separator">
             </v-flex>
-            <v-flex xs12 lg6 xl4  v-for="person in employees('Leitung')" :key="person.last_name" v-bind:id="'node'+person.name">
-              <v-card class="elevation-5 projectcard white--text">
-                <v-container fluid grid-list-sm>
-                  <v-layout row wrap>
-                    <v-flex xs12 md7>
-                      <v-card-title primary-title style="flex-direction: column; align-items: flex-start;">
-                        <div>
-                          <h6>{{ person.firstName }} {{ person.lastName }}</h6>
-                        </div>
-                        <div><v-icon dark>phone</v-icon>{{ person.telephone }}</div>
-                        <a class="white--text" :href="'mailto:'+person.email[0]"><v-icon dark>mail</v-icon> {{ person.email[0] }}</a>
-                        <a class="white--text" :href="person.sameAs[0].url" target="_blank"><v-icon dark>home</v-icon> {{ person.sameAs[0].text }}</a>
-                      </v-card-title>
-                    </v-flex>
-                    <v-flex class="pb-4 pt-4 pr-4" xs12 md4>
-                      <v-avatar size="180px" v-if="person.image[0]">
-                        <img :src="person.image[0].url" alt="avatar">
-                      </v-avatar>
-                      <v-avatar size="180px" v-if="!person.image[0]">
-                        <v-icon x-large dark >person</v-icon>
-                      </v-avatar>
-                    </v-flex>
-                    <v-flex xs12>
-                        <v-card-text v-html="person.description">
-                        </v-card-text>
-                    </v-flex>
-                  </v-layout>
-                </v-container>
-              </v-card>
-            </v-flex>
             <v-flex xs12 lg6 xl4  v-for="person in employees('Leitungsgremium')" :key="person.last_name" v-bind:id="'node'+person.name">
               <v-card class="elevation-5 projectcard white--text">
                 <v-container fluid grid-list-sm>
