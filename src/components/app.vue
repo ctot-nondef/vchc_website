@@ -48,14 +48,15 @@
         </v-slide-y-transition>
       </main>
       <v-footer color="primary"  app v-if="!loading">
-        <v-layout column>
-          <v-flex xs12 class="mt-5">
+          <v-flex xs12>
             <v-layout row wrap  >
               <v-flex v-for="item in footermenu" xs12 md2 class="text-xs-center mt-5 mb-5">
                 <v-btn color="white" flat  :key="item.tid[0].value" :to="{name: item.field_path[0].value}">{{ item.name[0].value }}</v-btn>
               </v-flex>
             </v-layout>
           </v-flex>
+        </v-footer color="primary"  app v-if="!loading">
+        <v-footer  app v-if="!loading">
           <v-flex xs12 class="mb-5">
             <v-layout row wrap>
               <v-flex v-for="logo in footer[0].imagefull" xs12 md4 class="text-xs-center mt-5 mb-5" >
@@ -63,7 +64,6 @@
               </v-flex>
             </v-layout>
           </v-flex>
-        </v-layout>
       </v-footer>
     </v-app>
 </template>
