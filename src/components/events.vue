@@ -20,49 +20,10 @@
         </v-flex>
       </v-layout>
     </section>
-    <section class="pb-5">
-      <v-container grid-list-xl v-if="futureevents.length==0">
-        <v-layout row wrap>
-          <v-flex xs12>
-            <h4 class="pagecaption">Gegenwärtig keine geplanten Tagungen</h4>
-            <hr class="separator">
-          </v-flex>
-        </v-layout>
-      </v-container>
-        <v-container grid-list-xl v-if="futureevents.length>0">
-          <v-layout row wrap>
-            <v-flex xs12 lg6 xl4  v-for="event in futureevents" :key="event.name">
-              <v-card class="elevation-5 projectcard white--text"  >
-                <v-layout column justify-space-between style="height: 100%!important;">
-                  <v-card-media v-if="event.thumbnailUrl" v-bind:src="event.thumbnailUrl.url" style="height: 200px!important;">
-                  </v-card-media>
-                  <v-card-title primary-title>
-                    <h6>{{ event.headline }}</h6>
-                    <div><v-icon dark>event</v-icon> {{ event.startDate | moment("dddd, Do MMM YYYY, h:mm a") }} - {{ event.endDate | moment("dddd, Do MMM YYYY, h:mm a") }}</div>
-                    <div><v-icon dark>place</v-icon> {{ event.location }}</div>
-                  </v-card-title>
-                  <v-card-text v-html="event.description"></v-card-text>
-                  <v-card-actions class="text-xs-right pb-4">
-                    <v-layout row justify-space-around>
-                      <v-flex xs10>
-                        <v-btn v-for="(download, index) in event.workFeatured" :key="index" dark class="accent" :href="download.url" target="_blank">{{download.description}}</v-btn>
-                      </v-flex>
-                    </v-layout>
-                  </v-card-actions>
-                </v-layout>
-              </v-card>
-            </v-flex>
-          </v-layout>
-        </v-container>
-    </section>
     <section class="pt-5 pb-5">
         <v-container grid-list-xl>
           <v-layout row wrap>
-            <v-flex xs12>
-              <h4 class="pagecaption">Vergangene Tagungen</h4>
-              <hr class="separator">
-            </v-flex>
-            <v-flex xs12 lg6 xl4  v-for="event in pastevents" :key="event.name">
+            <v-flex xs12 lg6 xl4  v-for="event in events" :key="event.name">
               <v-card class="elevation-5 projectcard white--text"  >
                 <v-layout column justify-space-between style="height: 100%!important;">
                   <v-card-media v-if="event.thumbnailUrl" v-bind:src="event.thumbnailUrl.url" style="height: 200px!important;">
@@ -97,8 +58,7 @@ export default {
   data: () => ({
     toFetch: {
       splash: 'full\\31',
-      pastevents: `teaser\\?type=event&afterdate=${Math.round(Date.now() / 1000)}`,
-      futureevents: `teaser\\?type=event&beforedate=${Math.round(Date.now() / 1000)}`,
+      events: 'teaser\\?type=event',
       persons: 'teaser\\?type=person',
     },
     windowSize: {

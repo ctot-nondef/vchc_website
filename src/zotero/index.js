@@ -17,7 +17,12 @@ export default {
     ItemData: null,
   }),
   methods: {
-    getItem() {
+    getItem(library, key) {
+      return ZOTERO.get(`/groups/${library}/items/${key}`, {
+        params: {
+          format: 'json',
+        },
+      });
     },
     getLibrary(library, p, l, s, d) {
       const limit = l || CONFIG.limit;

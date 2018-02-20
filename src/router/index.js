@@ -8,6 +8,7 @@ import about from '@/components/about';
 import db from '@/components/db';
 import people from '@/components/people';
 import pub from '@/components/pub';
+import spub from '@/components/zoterorecord';
 
 
 Vue.use(Router);
@@ -88,6 +89,14 @@ export default new Router({
           components: {
             Content: pub,
           },
+        },
+        {
+          path: 'spub/:zkey',
+          name: 'spub',
+          components: {
+            Content: spub,
+          },
+          props: { Content: true },
         },
         {
           path: '',
