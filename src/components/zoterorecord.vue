@@ -1,6 +1,9 @@
 <template>
   <v-content v-if="!loading">
-
+    test
+    <div class="">
+        {{ ItemData.key }}
+    </div>
   </v-content>
 </template>
 
@@ -26,21 +29,10 @@ export default {
   created() {
     this.getItem(this.LibToFetch, this.zkey).then((res) => {
       this.ItemData = res.data;
+      this.loading = false;
     });
   },
   methods: {
-    fetchRec() {
-      this.loading = true;
-      this.getLibrary(this.LibToFetch,
-        this.pagination.page,
-        this.pagination.rowsPerPage,
-        this.pagination.sortBy,
-        !this.pagination.descending ? 'asc' : 'desc',
-      ).then((res) => {
-        this.LibData = res.data;
-        this.loading = false;
-      });
-    },
   },
 };
 </script>

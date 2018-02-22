@@ -12,7 +12,7 @@
           <td>{{ props.item.data.title }}</td>
           <td  class="text-xs-right">{{ props.item.data.date }}</td>
           <td  class="text-xs-right">{{ props.item.data.creators[0].firstName }} {{ props.item.data.creators[0].lastName }}</td>
-          <td  class="text-xs-right"><v-btn color="white" flat :to="{name: 'spub', params: { zkey: props.item.key } }">Details</v-btn></td>
+          <td  class="text-xs-right"><v-btn dark class="accent" flat :to="{name: 'spub', params: { zkey: props.item.key } }">Details</v-btn></td>
         </template>
       </v-data-table>
   </v-content>
@@ -37,7 +37,7 @@ export default {
       { text: 'Titel', align: 'left', value: 'title' },
       { text: 'Datum', value: 'date' },
       { text: 'Author', value: 'creator' },
-      { text: 'Details' },
+      { text: 'Details', value: 'creator' },
     ],
   }),
   watch: {
