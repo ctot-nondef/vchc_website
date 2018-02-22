@@ -47,7 +47,7 @@
             <router-view name="Content"></router-view>
         </v-slide-y-transition>
       </main>
-      <v-footer color="primary"  app v-if="!loading">
+      <v-footer class="primary"  app v-if="!loading">
           <v-flex xs12>
             <v-layout row wrap  >
               <v-flex v-for="item in footermenu" :key="item.tid[0].value" xs12 md2 class="text-xs-center mt-5 mb-5">
