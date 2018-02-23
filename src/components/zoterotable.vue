@@ -9,9 +9,10 @@
         class="elevation-1"
       >
         <template slot="items" slot-scope="props">
+          <td  class="text-xs-right"  v-if="props.item.data.creators[0].creatorType!='author'" > <span v-for="(author, index) in props.item.data.creators" :key="index" >{{ author.firstName }} {{ author.lastName }} [ {{ author.creatorType }} ]/</span> </td>
+          <td  class="text-xs-right" v-if="props.item.data.creators[0].creatorType=='author'" > <span>{{ props.item.data.creators[0].firstName }} {{ props.item.data.creators[0].lastName }} [ {{ props.item.data.creators[0].creatorType }} ]/</span> </td>
           <td>{{ props.item.data.title }}</td>
           <td  class="text-xs-right">{{ props.item.data.date }}</td>
-          <td  class="text-xs-right">{{ props.item.data.creators[0].firstName }} {{ props.item.data.creators[0].lastName }}</td>
           <td  class="text-xs-right"><v-btn dark class="accent" flat :to="{name: 'spub', params: { zkey: props.item.key } }">Details</v-btn></td>
         </template>
       </v-data-table>
@@ -34,9 +35,9 @@ export default {
     },
     selected: [],
     headers: [
+      { text: 'Author', value: 'creator' },
       { text: 'Titel', align: 'left', value: 'title' },
       { text: 'Datum', value: 'date' },
-      { text: 'Author', value: 'creator' },
       { text: 'Details', value: 'creator' },
     ],
   }),
