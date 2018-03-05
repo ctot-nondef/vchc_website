@@ -12,7 +12,7 @@
         <v-container grid-list-xl>
           <v-layout row wrap>
             <v-flex xs12>
-              <h4 class="pagecaption">Leitung</h4>
+              <h4 class="pagecaption">Leitung / Project Leader</h4>
               <hr class="separator">
             </v-flex>
             <v-flex xs12 lg6 xl4  v-for="person in employees('Leitung')" :key="person.last_name" v-bind:id="'node'+person.name">
@@ -65,7 +65,7 @@
         <v-container grid-list-xl>
           <v-layout row wrap>
             <v-flex xs12>
-              <h4 class="pagecaption">MitarbeiterInnen</h4>
+              <h4 class="pagecaption">MitarbeiterInnen / Researchers</h4>
               <hr class="separator">
             </v-flex>
             <v-flex xs12 lg6 xl4 v-for="person in employees('Projektmitarbeiter')" :key="person.last_name" v-bind:id="'node'+person.name">
@@ -121,7 +121,7 @@
         <v-container grid-list-xl>
           <v-layout row wrap>
             <v-flex xs12>
-              <h4 class="pagecaption">Leitungsgremium</h4>
+              <h4 class="pagecaption">Leitungsgremium / Steering Committee</h4>
               <hr class="separator">
             </v-flex>
             <v-flex xs12 lg6 xl4  v-for="person in employees('Leitungsgremium')" :key="person.last_name" v-bind:id="'node'+person.name">
