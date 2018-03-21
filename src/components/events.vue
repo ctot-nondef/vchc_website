@@ -23,7 +23,7 @@
     <section class="pt-5 pb-5">
         <v-container grid-list-xl>
           <v-layout row wrap>
-            <v-flex xs12 lg6 xl4  v-for="event in events" :key="event.name">
+            <v-flex xs12 lg6 xl4  v-for="event in sortedEvents" :key="event.name">
               <v-card class="elevation-5 projectcard white--text"  >
                 <v-layout column justify-space-between style="height: 100%!important;">
                   <v-card-media v-if="event.thumbnailUrl" v-bind:src="event.thumbnailUrl.url" style="height: 200px!important;">
@@ -68,6 +68,14 @@ export default {
     menu: null,
     loading: true,
   }),
+  filters: {
+    sortedEvents: function sort() {
+      return this.events.sort((a, b) => {
+        console.log(a, b);
+        return moment(a.startDate, "X") - moment(b.startDate, "X");
+      });
+    },
+  },
   mounted() {
     this.onResize();
   },
