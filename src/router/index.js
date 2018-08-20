@@ -9,7 +9,7 @@ import db from '@/components/db';
 import people from '@/components/people';
 import pub from '@/components/pub';
 import spub from '@/components/zoterorecord';
-import results from '@/components/searchresults';
+// import results from '@/components/searchresults';
 
 
 Vue.use(Router);
@@ -99,13 +99,13 @@ export default new Router({
           },
           props: { Content: true },
         },
-        {
-          path: 'search/:searchstring',
-          name: 'search',
-          components: {
-            Content: results,
-          },
-        },
+        // {
+        //   path: 'search/:searchstring',
+        //   name: 'search',
+        //   components: {
+        //     Content: results,
+        //   },
+        // },
         {
           path: '',
           redirect: '/en/start',

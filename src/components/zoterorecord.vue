@@ -7,7 +7,7 @@
           <h2 class="headline">{{ ItemData.title }}</h2>
           <div justify-center >
             <v-list two-line class="elevation-1">
-              <v-list-tile v-for="Author in ItemData.creators" avatar>
+              <v-list-tile v-for="(Author, index) in ItemData.creators" avatar :key="index" >
                 <v-list-tile-avatar>
                   <v-icon class="grey lighten-1 white--text">person</v-icon>
                 </v-list-tile-avatar>
