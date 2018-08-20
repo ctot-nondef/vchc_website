@@ -23,14 +23,14 @@
     <section class="pt-5 pb-5">
         <v-container grid-list-xl>
           <v-layout row wrap>
-            <v-flex xs12 lg6 xl4  v-for="event in sortedEvents" :key="event.name">
+            <v-flex xs12 lg6 xl4  v-for="event in events" :key="event.name">
               <v-card class="elevation-5 projectcard white--text"  >
                 <v-layout column justify-space-between style="height: 100%!important;">
                   <v-card-media v-if="event.thumbnailUrl" v-bind:src="event.thumbnailUrl.url" style="height: 200px!important;">
                   </v-card-media>
                   <v-card-title primary-title>
                     <h6>{{ event.headline }}</h6>
-                    <div><v-icon dark>event</v-icon> {{ event.startDate | moment("dddd, Do MMM YYYY, h:mm a") }} - {{ event.endDate | moment("dddd, Do MMM YYYY, h:mm a") }}</div>
+                    <div><v-icon dark>event</v-icon> {{ event.startDate |  | moment("dddd, Do MMM YYYY, h:mm a") }} - {{ event.endDate | moment("dddd, Do MMM YYYY, h:mm a") }}</div>
                     <div><v-icon dark>place</v-icon> {{ event.location }}</div>
                   </v-card-title>
                   <v-card-text v-html="event.description"></v-card-text>
@@ -68,14 +68,6 @@ export default {
     menu: null,
     loading: true,
   }),
-  filters: {
-    sortedEvents: function sort() {
-      return this.events.sort((a, b) => {
-        console.log(a, b);
-        return moment(a.startDate, "X") - moment(b.startDate, "X");
-      });
-    },
-  },
   mounted() {
     this.onResize();
   },
