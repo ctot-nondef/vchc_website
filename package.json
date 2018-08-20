@@ -22,7 +22,8 @@
     "vue-carousel-3d":"0.1.18",
     "vue-scrollto":"2.7.10",
     "vue-slider-component":"2.4.5",
-    "vue-moment":"3.1.0"
+    "vue-moment":"3.1.0",
+    "babel-polyfill": "^6.26.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
