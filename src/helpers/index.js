@@ -3,7 +3,7 @@ import axios from 'axios';
 const HTTP = axios;
 
 const DRUPAL = axios.create({
-  baseURL: 'http://wksd8dev.eos.arz.oeaw.ac.at/',
+  baseURL: 'https://wksd8dev.eos.arz.oeaw.ac.at/',
   params: {
     _format: 'json',
   },
