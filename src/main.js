@@ -21,6 +21,7 @@ import {
   VDataTable,
   VPagination,
   VTextField,
+  VCarousel,
 } from 'vuetify';
 import Carousel3d from 'vue-carousel-3d';
 import VueScrollTo from 'vue-scrollto';
@@ -50,6 +51,7 @@ Vue.use(
       VDataTable,
       VPagination,
       VTextField,
+      VCarousel,
     } });
 
 Vue.use(VueAxios, axios);

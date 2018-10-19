@@ -88,6 +88,11 @@
                 </v-container>
               </v-card>
             </v-flex>
+            <v-flex v-if="project.image.length > 0" >
+              <v-carousel hide-controls height="100">
+                <v-carousel-item v-for="(image, u) in project.image" :key="u" :src="image.url"></v-carousel-item>
+              </v-carousel>
+            </v-flex>
           </v-layout>
         </v-flex>
         </v-layout>
@@ -134,5 +139,9 @@ export default {
   background-color: rgba(0, 0, 0, 0);
   border: none;
   overflow: visible!important;
+}
+
+.carousel__item {
+  background-size: auto!important;
 }
 </style>
